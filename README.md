@@ -33,6 +33,10 @@
       compile project(':react-native-verloop-sdk')
   	```
 
+#### Additional iOS step:
+
+* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
+* Run pod install in the same folder
 
 ## Usage
 ```javascript
