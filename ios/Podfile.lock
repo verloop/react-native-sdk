@@ -1,0 +1,31 @@
+PODS:
+  - React (0.59.10):
+    - React/Core (= 0.59.10)
+  - React/Core (0.59.10):
+    - yoga (= 0.59.10.React)
+  - VerloopSDKiOS (0.1.2)
+  - yoga (0.59.10.React)
+
+DEPENDENCIES:
+  - React (from `../node_modules/react-native`)
+  - VerloopSDKiOS (~> 0.1.2)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
+
+SPEC REPOS:
+  trunk:
+    - VerloopSDKiOS
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
+
+SPEC CHECKSUMS:
+  React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
+  VerloopSDKiOS: b593bc8999cef3ce33725b62ce3ed7f7c429879b
+  yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
+
+PODFILE CHECKSUM: 4823f429461f1012aa2aa6e722b89856d23d8b95
+
+COCOAPODS: 1.8.4
