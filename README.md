@@ -36,8 +36,19 @@
 
 ## Usage
 ```javascript
+import React, {Component} from 'react';
+import {Text, View} from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
 
-// TODO: What to do with the module?
-VerloopSdk;
+export default class VerloopLiveChat extends Component {
+
+    async componentDidMount() {
+        await VerloopSdk.createAnonymousUserConfig('hello.stage');
+        VerloopSdk.showChat();
+    }
+
+    render() {
+        return null;
+    }
+}
 ```
