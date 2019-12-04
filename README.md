@@ -33,11 +33,150 @@
       compile project(':react-native-verloop-sdk')
   	```
 
+#### Additional iOS step:
+
+* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
+* Run pod install in the same folder
 
 ## Usage
 ```javascript
+import React, {Component} from 'react';
 import VerloopSdk from 'react-native-verloop-sdk';
 
-// TODO: What to do with the module?
-VerloopSdk;
+export default class VerloopLiveChat extends Component {
+
+    async componentDidMount() {
+        const clientId = "<YOUR COMPANY ID>"; // it is same as https://<YOUR COMPANY ID>.verloop.io
+        await VerloopSdk.createAnonymousUserConfig(clientId);
+        //or
+        await VerloopSdk.createUserConfig(clientId, userId);
+        
+        //optional
+        VerloopSdk.putCustomField(key, value);
+        //optional
+        VerloopSdk.setRecipeId(recipeId);
+        //optional
+        VerloopSdk.setUserEmail(email);
+        //optional
+        VerloopSdk.setUserPhone(phoneNumber);
+        //optional
+        VerloopSdk.setUserName(name);
+        
+        VerloopSdk.showChat();
+    }
+
+    render() {
+        return null;
+    }
+}
+```
+
+### Steps to enable notification:
+
+Create your application on firebase console. (https://console.firebase.google.com)
+
+Download google-services.json and GoogleService-Info.plist for android and iOS respectively.\
+Make sure your google-services.json and GoogleService-Info.plist are placed in correct folders.\
+google-services.json is placed inside <YOUR-PROJECT>/android/app\
+GoogleService-Info.plist is placed inside <YOUR-PROJECT>/ios
+  
+#### Android
+Configure gradle files. https://firebase.google.com/docs/cloud-messaging/android/client#set-up-firebase-and-the-fcm-sdk
+
+Add dependency:
+`implementation 'com.google.firebase:firebase-messaging:20.0.1'`
+
+Edit MainApplication.java:
+```java
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;                       
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+   new MainReactPackage(),
+   new RNFirebasePackage(),
+   new RNFirebaseMessagingPackage(),
+   new RNFirebaseNotificationsPackage()
+  );                               
+}
+```
+
+Add these lines in settings.gradle
+```gradle
+include ':react-native-firebase'                       
+project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
+```
+In app build gradle, add dependency:
+```gradle
+dependencies {
+   compile(project(':react-native-firebase')) {   
+       transitive = false
+   }
+   // ... other dependencies listed
+}
+```
+
+Install firebase as a dependency\
+`npm install --save react-native-firebase`
+
+#### React Native Code
+```typescript
+import React, {Component} from 'react';
+import VerloopSdk from 'react-native-verloop-sdk';
+import firebase from 'react-native-firebase';
+import { AsyncStorage } from 'react-native';
+
+export default class VerloopLiveChat extends Component {
+
+    async componentDidMount() {
+        const token = await checkPermissionAndGetToken();
+        if(token != null){
+          await VerloopSdk.setFcmToken(token);
+        }
+          
+        await VerloopSdk.createAnonymousUserConfig('hello.stage');
+        VerloopSdk.showChat();
+    }
+   
+    async checkPermissionAndGetToken() {
+      const enabled = await firebase.messaging().hasPermission();
+      if (enabled) {
+          return this.getToken();
+      } else {
+          const permissionGranted = this.requestPermission();
+          if(permissionGranted){
+            return this.getToken();
+          }
+      }
+      return null;
+    }
+    
+    async getToken() {
+      let fcmToken = await AsyncStorage.getItem('fcmToken');
+      if (!fcmToken) {
+          fcmToken = await firebase.messaging().getToken();
+          if (fcmToken) {
+              // user has a device token
+              await AsyncStorage.setItem('fcmToken', fcmToken);
+          }
+      }
+      return fcmToken;
+    }
+
+    async requestPermission() {
+      try {
+          await firebase.messaging().requestPermission();
+          return true;
+      } catch (error) {
+          // User has rejected permissions
+          console.log('permission rejected');
+      }
+      return false;
+    }
+
+    render() {
+        return null;
+    }
+}
 ```
