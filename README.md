@@ -87,7 +87,7 @@ Add dependency:
 `implementation 'com.google.firebase:firebase-messaging:20.0.1'`
 
 Edit MainApplication.java:
-```
+```java
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;                       
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
@@ -103,12 +103,12 @@ protected List<ReactPackage> getPackages() {
 ```
 
 Add these lines in settings.gradle
-```
+```gradle
 include ':react-native-firebase'                       
 project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
 ```
 In app build gradle, add dependency:
-```
+```gradle
 dependencies {
    compile(project(':react-native-firebase')) {   
        transitive = false
@@ -117,11 +117,11 @@ dependencies {
 }
 ```
 
-Install firebase as a dependency
+Install firebase as a dependency\
 `npm install --save react-native-firebase`
 
 #### React Native Code
-```
+```typescript
 import React, {Component} from 'react';
 import VerloopSdk from 'react-native-verloop-sdk';
 import firebase from 'react-native-firebase';
