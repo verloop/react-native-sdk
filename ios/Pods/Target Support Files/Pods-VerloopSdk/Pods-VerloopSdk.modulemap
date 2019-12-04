@@ -1,4 +1,4 @@
-module Pods_VerloopSdk {
+framework module Pods_VerloopSdk {
   umbrella header "Pods-VerloopSdk-umbrella.h"
 
   export *

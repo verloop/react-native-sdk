@@ -1,15 +1,4 @@
 platform :ios, '9.0'
 target 'VerloopSdk' do
   use_frameworks!
-  pod 'yoga', path: '../node_modules/react-native/ReactCommon/yoga/yoga.podspec'
-  pod 'React', path: '../node_modules/react-native'
-  pod 'VerloopSDKiOS', '~> 0.1.2'
-end
-
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '4.2'
-        end
-    end
 end

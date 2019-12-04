@@ -1,7 +1,7 @@
 {
   "name": "react-native-verloop-sdk",
   "title": "React Native Verloop Sdk",
-  "version": "1.0.15",
+  "version": "1.0.60",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Raghav Rawat",
+    "email": "raghav@verloop.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
@@ -29,5 +29,8 @@
   "devDependencies": {
     "react": "^16.8.3",
     "react-native": "^0.59.10"
+  },
+  "dependencies": {
+    "react-native-pod": "^1.11.0"
   }
 }

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8294B9A6D8A77F4CCBE4A617 /* Pods_VerloopSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7770CF38CD17C751730656F /* Pods_VerloopSdk.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* VerloopSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* VerloopSdk.m */; };
-		F56D3A1811B8926FB760804F /* libPods-VerloopSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E230ED1D76F8194E54CF52 /* libPods-VerloopSdk.a */; };
+		BE1614432396F63A00DF0BAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1614422396F63A00DF0BAD /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,12 +26,13 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libVerloopSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVerloopSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2F48B3797E691C3F78953E8 /* Pods-VerloopSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerloopSdk.release.xcconfig"; path = "Target Support Files/Pods-VerloopSdk/Pods-VerloopSdk.release.xcconfig"; sourceTree = "<group>"; };
+		36E1D5E8A21197CA7BFCBEB4 /* Pods-VerloopSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerloopSdk.debug.xcconfig"; path = "Target Support Files/Pods-VerloopSdk/Pods-VerloopSdk.debug.xcconfig"; sourceTree = "<group>"; };
+		43576F71A3BA13F8CF8A111F /* Pods-VerloopSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerloopSdk.release.xcconfig"; path = "Target Support Files/Pods-VerloopSdk/Pods-VerloopSdk.release.xcconfig"; sourceTree = "<group>"; };
+		A7770CF38CD17C751730656F /* Pods_VerloopSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerloopSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* VerloopSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerloopSdk.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* VerloopSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerloopSdk.m; sourceTree = "<group>"; };
-		BE6EA05A237EC32C00CB5880 /* VerloopSdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerloopSdk-Bridging-Header.h"; sourceTree = "<group>"; };
-		C3E230ED1D76F8194E54CF52 /* libPods-VerloopSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VerloopSdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC0A344AA5A266050C3C4395 /* Pods-VerloopSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerloopSdk.debug.xcconfig"; path = "Target Support Files/Pods-VerloopSdk/Pods-VerloopSdk.debug.xcconfig"; sourceTree = "<group>"; };
+		BE1614412396F63A00DF0BAD /* VerloopSdk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerloopSdk-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE1614422396F63A00DF0BAD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56D3A1811B8926FB760804F /* libPods-VerloopSdk.a in Frameworks */,
+				8294B9A6D8A77F4CCBE4A617 /* Pods_VerloopSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,33 +55,34 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		167DF603E6E514C73FB202A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7770CF38CD17C751730656F /* Pods_VerloopSdk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				BE1614422396F63A00DF0BAD /* File.swift */,
 				B3E7B5881CC2AC0600A0062D /* VerloopSdk.h */,
 				B3E7B5891CC2AC0600A0062D /* VerloopSdk.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				95031B5573CAEA329FC9BE44 /* Pods */,
-				B1B1EF83DF28D4D1A3AC9EF7 /* Frameworks */,
-				BE6EA05A237EC32C00CB5880 /* VerloopSdk-Bridging-Header.h */,
+				C58DE8C2492B35C7B25E84E7 /* Pods */,
+				167DF603E6E514C73FB202A8 /* Frameworks */,
+				BE1614412396F63A00DF0BAD /* VerloopSdk-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
-		95031B5573CAEA329FC9BE44 /* Pods */ = {
+		C58DE8C2492B35C7B25E84E7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FC0A344AA5A266050C3C4395 /* Pods-VerloopSdk.debug.xcconfig */,
-				B2F48B3797E691C3F78953E8 /* Pods-VerloopSdk.release.xcconfig */,
+				36E1D5E8A21197CA7BFCBEB4 /* Pods-VerloopSdk.debug.xcconfig */,
+				43576F71A3BA13F8CF8A111F /* Pods-VerloopSdk.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		B1B1EF83DF28D4D1A3AC9EF7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C3E230ED1D76F8194E54CF52 /* libPods-VerloopSdk.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,7 +92,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "VerloopSdk" */;
 			buildPhases = (
-				97CCC2108B1AC5F5DD7AA57E /* [CP] Check Pods Manifest.lock */,
+				9D25386D48CB95A9A5972CD1 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -137,7 +140,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		97CCC2108B1AC5F5DD7AA57E /* [CP] Check Pods Manifest.lock */ = {
+		9D25386D48CB95A9A5972CD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E7B58A1CC2AC0600A0062D /* VerloopSdk.m in Sources */,
+				BE1614432396F63A00DF0BAD /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +223,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -261,6 +266,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -268,10 +274,8 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC0A344AA5A266050C3C4395 /* Pods-VerloopSdk.debug.xcconfig */;
+			baseConfigurationReference = 36E1D5E8A21197CA7BFCBEB4 /* Pods-VerloopSdk.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
-				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -281,24 +285,19 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = VerloopSdk;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "VerloopSdk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2F48B3797E691C3F78953E8 /* Pods-VerloopSdk.release.xcconfig */;
+			baseConfigurationReference = 43576F71A3BA13F8CF8A111F /* Pods-VerloopSdk.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
-				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,14 +307,11 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = VerloopSdk;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "VerloopSdk-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
