@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/verloop/react-native-sdk.git", :tag => "master" }
   s.source_files  = "RNVerloopSdk/**/*.{h,m}"
   s.requires_arc = true
+  s.vendored_frameworks = "VerloopSDK.framework"
 
 
   s.dependency "React"

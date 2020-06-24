@@ -5425,10 +5425,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-verloop-sdk@^1.0.62-rc21:
-  version "1.0.62-rc21"
-  resolved "https://registry.yarnpkg.com/react-native-verloop-sdk/-/react-native-verloop-sdk-1.0.62-rc21.tgz#617be63fe67b4c461761b86e84f3c0e1a976ffef"
-  integrity sha512-DRsp9sI5PiqZa7Cem3oDuKTMS7ec9d98xAC0tvdjyKWprfmrZeJWhqa0yZn3SjEvUF+KSHmKLm/XPfRrjW73hw==
+react-native-verloop-sdk@^1.0.63:
+  version "1.0.63"
+  resolved "https://registry.yarnpkg.com/react-native-verloop-sdk/-/react-native-verloop-sdk-1.0.63.tgz#4e96f0412f8489c2185f36f54aa1a9ae2edbffa5"
+  integrity sha512-so98Nqa4n2Rn5aGLrOBHvcYlhyA3wpMbbMO1SgahzQhhCfP5tZjLHBSWeRGFa+YAWS41fiNAVq7ThlJMwS21Zg==
 
 react-native@0.62.2:
   version "0.62.2"

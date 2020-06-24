@@ -1,13 +1,15 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import VerloopSdk from 'react-native-verloop-sdk';
 
 export default class VerloopLiveChat extends Component {
 
     async componentDidMount() {
         const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
-//        await VerloopSdk.createAnonymousUserConfig(clientId);
+        const userId = "raghav"; // it is the unique userID to identify all the chats for this user
+
+       // VerloopSdk.createAnonymousUserConfig(clientId);
         //or
-        await VerloopSdk.createUserConfig(clientId, "213341");
+       VerloopSdk.createUserConfig(clientId, userId);
 
         //optional
 //        VerloopSdk.putCustomField(key, value);
@@ -20,7 +22,7 @@ export default class VerloopLiveChat extends Component {
 //        //optional
 //        VerloopSdk.setUserName(name);
 
-        VerloopSdk.showChat();
+       VerloopSdk.showChat();
     }
 
     render() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0ACB85124A3B33C00C50CE4 /* VerloopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ACB85024A3B33C00C50CE4 /* VerloopSDK.framework */; };
 		A0D2791924A2347100CFD63C /* libRNVerloopSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 134814201AA4EA6300B7C361 /* libRNVerloopSdk.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNVerloopSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVerloopSdk.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNVerloopSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNVerloopSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0ACB85024A3B33C00C50CE4 /* VerloopSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VerloopSDK.framework; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNVerloopSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNVerloopSdk.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNVerloopSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNVerloopSdk.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,6 +37,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D2791924A2347100CFD63C /* libRNVerloopSdk.a in Frameworks */,
+				A0ACB85124A3B33C00C50CE4 /* VerloopSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 				B3E7B5881CC2AC0600A0062D /* RNVerloopSdk.h */,
 				B3E7B5891CC2AC0600A0062D /* RNVerloopSdk.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				A0ACB85024A3B33C00C50CE4 /* VerloopSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +210,10 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -222,6 +230,10 @@
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
