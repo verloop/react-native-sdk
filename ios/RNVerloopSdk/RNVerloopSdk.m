@@ -1,27 +1,22 @@
-#import "VerloopSdk.h"
+
+#import "RNVerloopSdk.h"
 #import <React/RCTLog.h>
 
-@implementation VerloopSdk
+@implementation RNVerloopSdk
 
+RCT_EXPORT_MODULE()
 
-RCT_EXPORT_MODULE();
-
-RCT_REMAP_METHOD(createUserConfig,clientId:(NSString *)clientId userId:(NSString *)userId
-                           findEventsWithResolver:(RCTPromiseResolveBlock)resolve
-                           rejecter:(RCTPromiseRejectBlock)reject )
+RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId )
 {
-//    printf("came to createUserConfig");
+    printf("came to createUserConfig");
+//     RCTLogInfo(@"Pretending to create an event %@ at %@", clientId, userId);
 //    config = [[VLConfig alloc] initWithClientId:clientId userId:userId];
-    resolve(nil);
 }
 
-RCT_REMAP_METHOD(createAnonymousUserConfig,clientId:(NSString *)clientId
-                           findEventsWithResolver:(RCTPromiseResolveBlock)resolve
-                           rejecter:(RCTPromiseRejectBlock)reject )
+RCT_EXPORT_METHOD(createAnonymousUserConfig:(NSString *)clientId )
 {
 //    printf("came to createAnonymousUserConfig");
 //    config = [[VLConfig alloc] initWithClientId:clientId];
-    resolve(nil);
 }
 
 RCT_EXPORT_METHOD(setFcmToken:(NSString *)token)
@@ -81,4 +76,6 @@ RCT_EXPORT_METHOD(showChat)
 //        [verloop start];
 //    }
 }
+
 @end
+  
