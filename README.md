@@ -40,17 +40,28 @@
 
 ## Usage
 ```javascript
-import React, {Component} from 'react';
+import {Component} from 'react';
+import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
 
 export default class VerloopLiveChat extends Component {
 
+
     async componentDidMount() {
-        const clientId = "<YOUR COMPANY ID>"; // it is same as https://<YOUR COMPANY ID>.verloop.io
-        await VerloopSdk.createAnonymousUserConfig(clientId);
+        const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
+        const userId = "raghav"; // it is the unique userID to identify all the chats for this user
+
+        // VerloopSdk.createAnonymousUserConfig(clientId);
         //or
-        await VerloopSdk.createUserConfig(clientId, userId);
-        
+        VerloopSdk.createUserConfig(clientId, userId);
+
+        const eventEmitter = new NativeEventEmitter(VerloopSdk);
+        this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
+           console.log(event.title);
+           console.log(event.type);
+           console.log(event.payload);
+        });
+
         //optional
         VerloopSdk.putCustomField(key, value);
         //optional
@@ -61,12 +72,15 @@ export default class VerloopLiveChat extends Component {
         VerloopSdk.setUserPhone(phoneNumber);
         //optional
         VerloopSdk.setUserName(name);
-        
+
         VerloopSdk.showChat();
     }
 
     render() {
         return null;
+    }
+    componentWillUnmount() {
+        this.eventListener.remove(); //Removes the listener
     }
 }
 ```
