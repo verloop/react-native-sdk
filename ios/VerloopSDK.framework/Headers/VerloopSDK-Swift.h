@@ -217,6 +217,7 @@ SWIFT_CLASS("_TtC10VerloopSDK8VLConfig")
 - (void)setUserEmailWithUserEmail:(NSString * _Nullable)email;
 - (void)setUserPhoneWithUserPhone:(NSString * _Nullable)phone;
 - (void)setRecipeIdWithRecipeId:(NSString * _Nullable)id;
+- (void)setButtonOnClickListenerOnButtonClicked:(void (^ _Nullable)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))buttonClicked;
 - (void)putCustomFieldWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value scope:(enum SCOPE)scope;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -457,6 +458,7 @@ SWIFT_CLASS("_TtC10VerloopSDK8VLConfig")
 - (void)setUserEmailWithUserEmail:(NSString * _Nullable)email;
 - (void)setUserPhoneWithUserPhone:(NSString * _Nullable)phone;
 - (void)setRecipeIdWithRecipeId:(NSString * _Nullable)id;
+- (void)setButtonOnClickListenerOnButtonClicked:(void (^ _Nullable)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))buttonClicked;
 - (void)putCustomFieldWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value scope:(enum SCOPE)scope;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -701,6 +703,7 @@ SWIFT_CLASS("_TtC10VerloopSDK8VLConfig")
 - (void)setUserEmailWithUserEmail:(NSString * _Nullable)email;
 - (void)setUserPhoneWithUserPhone:(NSString * _Nullable)phone;
 - (void)setRecipeIdWithRecipeId:(NSString * _Nullable)id;
+- (void)setButtonOnClickListenerOnButtonClicked:(void (^ _Nullable)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))buttonClicked;
 - (void)putCustomFieldWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value scope:(enum SCOPE)scope;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -941,6 +944,7 @@ SWIFT_CLASS("_TtC10VerloopSDK8VLConfig")
 - (void)setUserEmailWithUserEmail:(NSString * _Nullable)email;
 - (void)setUserPhoneWithUserPhone:(NSString * _Nullable)phone;
 - (void)setRecipeIdWithRecipeId:(NSString * _Nullable)id;
+- (void)setButtonOnClickListenerOnButtonClicked:(void (^ _Nullable)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))buttonClicked;
 - (void)putCustomFieldWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value scope:(enum SCOPE)scope;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");

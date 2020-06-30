@@ -11,17 +11,31 @@
 }
 RCT_EXPORT_MODULE()
 
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"veloop_button_clicked"];
+}
+
+typedef void (^LiveChatButtonClickListener)(NSString *, NSString *, NSString *);
+
 VLConfig *config;
 
 RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId )
 {
-    printf("came to createUserConfig");
     config = [[VLConfig alloc] initWithClientId:clientId userId:userId];
+    [config setButtonOnClickListenerOnButtonClicked:^(NSString *title, NSString *type, NSString *payload){
+        [self sendEventWithName:@"veloop_button_clicked" body:@{@"title": title, @"type": type, @"payload": payload }];
+        return;
+    }];
 }
 
 RCT_EXPORT_METHOD(createAnonymousUserConfig:(NSString *)clientId )
 {
    config = [[VLConfig alloc] initWithClientId:clientId];
+   [config setButtonOnClickListenerOnButtonClicked:^(NSString *title, NSString *type, NSString *payload){
+       [self sendEventWithName:@"veloop_button_clicked" body:@{@"title": title, @"type": type, @"payload": payload }];
+       return;
+   }];
 }
 
 RCT_EXPORT_METHOD(setFcmToken:(NSString *)token)
