@@ -5,13 +5,19 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.LifecycleEventListener;
+
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 
 import android.app.Activity;
 
 import io.verloop.sdk.Verloop;
+import io.verloop.sdk.LiveChatButtonClickListener;
 import io.verloop.sdk.VerloopConfig;
 
-public class RNVerloopSdkModule extends ReactContextBaseJavaModule {
+public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
   private final ReactApplicationContext reactContext;
 
@@ -22,6 +28,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule {
   public RNVerloopSdkModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+    reactContext.addLifecycleEventListener(this);
   }
 
   @Override
@@ -29,19 +36,36 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule {
     return "RNVerloopSdk";
   }
 
-  /*@Override
-  public String getName() {
-    return "VerloopSdk";
-  }*/
+  private void sendEvent(ReactApplicationContext reactContext,
+                         String eventName,
+                         WritableMap params) {
+    reactContext
+            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+            .emit(eventName, params);
+  }
+
+  private void setButtonClickListener(VerloopConfig verloopConfig){
+    verloopConfig.setButtonOnClickListener(new LiveChatButtonClickListener(){
+      public void buttonClicked(String title, String type, String payload) {
+        WritableMap params = Arguments.createMap();
+        params.putString("title", title);
+        params.putString("type", type);
+        params.putString("payload", payload);
+        sendEvent(reactContext, "veloop_button_clicked", params);
+      }
+    });
+  }
 
   @ReactMethod
   public void createUserConfig(String clientId, String userId) {
     verloopConfig = new VerloopConfig(clientId, userId);
+    setButtonClickListener(verloopConfig);
   }
 
   @ReactMethod
   public void createAnonymousUserConfig(String clientId) {
     verloopConfig = new VerloopConfig(clientId);
+    setButtonClickListener(verloopConfig);
   }
 
   @ReactMethod
@@ -101,6 +125,23 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule {
         verloop = new Verloop(activity, verloopConfig);
       }
       verloop.showChat();
+    }
+  }
+
+  @Override
+  public void onHostResume() {
+    // do nothing
+  }
+
+  @Override
+  public void onHostPause() {
+    // do nothing
+  }
+
+  @Override
+  public void onHostDestroy() {
+    if(verloop != null){
+      verloop.onStopChat();
     }
   }
 }
