@@ -19,6 +19,10 @@ export default class VerloopLiveChat extends Component {
            console.log(event.type);
            console.log(event.payload);
         });
+        
+        this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
+           console.log(event.url);
+        });
 
         //optional
 //        VerloopSdk.putCustomField(key, value);
@@ -32,6 +36,8 @@ export default class VerloopLiveChat extends Component {
 //        VerloopSdk.setUserName(name);
 
         VerloopSdk.showChat();
+
+//        VerloopSdk.hideChat();
     }
 
     render() {

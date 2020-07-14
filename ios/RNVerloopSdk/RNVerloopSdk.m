@@ -13,18 +13,24 @@ RCT_EXPORT_MODULE()
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"veloop_button_clicked"];
+  return @[@"veloop_button_clicked", @"veloop_url_clicked"];
 }
 
 typedef void (^LiveChatButtonClickListener)(NSString *, NSString *, NSString *);
+typedef void (^LiveChatUrlClickListener)(NSString *);
 
 VLConfig *config;
+VerloopSDK *verloop;
 
 RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId )
 {
     config = [[VLConfig alloc] initWithClientId:clientId userId:userId];
     [config setButtonOnClickListenerOnButtonClicked:^(NSString *title, NSString *type, NSString *payload){
         [self sendEventWithName:@"veloop_button_clicked" body:@{@"title": title, @"type": type, @"payload": payload }];
+        return;
+    }];
+    [config setUrlClickListenerOnUrlClicked:^(NSString *url){
+        [self sendEventWithName:@"veloop_url_clicked" body:@{@"url": url}];
         return;
     }];
 }
@@ -34,6 +40,11 @@ RCT_EXPORT_METHOD(createAnonymousUserConfig:(NSString *)clientId )
    config = [[VLConfig alloc] initWithClientId:clientId];
    [config setButtonOnClickListenerOnButtonClicked:^(NSString *title, NSString *type, NSString *payload){
        [self sendEventWithName:@"veloop_button_clicked" body:@{@"title": title, @"type": type, @"payload": payload }];
+       return;
+   }];
+
+   [config setUrlClickListenerOnUrlClicked:^(NSString *url){
+       [self sendEventWithName:@"veloop_url_clicked" body:@{@"url": url}];
        return;
    }];
 }
@@ -91,8 +102,15 @@ RCT_EXPORT_METHOD(showChat)
 {
    if(config != nil){
        printf("came to showChat");
-       VerloopSDK *verloop = [[VerloopSDK alloc] initWithConfig:config];
+       verloop = [[VerloopSDK alloc] initWithConfig:config];
        [verloop start];
+   }
+}
+
+RCT_EXPORT_METHOD(hideChat)
+{
+   if(verloop != nil){
+       [verloop hide];
    }
 }
 

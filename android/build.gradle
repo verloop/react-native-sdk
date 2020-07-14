@@ -36,5 +36,5 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:0.20.1'
-    implementation 'com.github.verloop:android-sdk:1.0.5'
+    implementation 'com.github.verloop:android-sdk:1.0.6'
 }
