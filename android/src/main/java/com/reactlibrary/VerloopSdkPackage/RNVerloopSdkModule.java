@@ -15,6 +15,7 @@ import android.app.Activity;
 
 import io.verloop.sdk.Verloop;
 import io.verloop.sdk.LiveChatButtonClickListener;
+import io.verloop.sdk.LiveChatUrlClickListener;
 import io.verloop.sdk.VerloopConfig;
 
 public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
@@ -56,16 +57,28 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
     });
   }
 
+  private void setUrlClickListener(VerloopConfig verloopConfig){
+    verloopConfig.getUrlClickListener(new LiveChatUrlClickListener(){
+      public void urlClicked(String url) {
+        WritableMap params = Arguments.createMap();
+        params.putString("url", url);
+        sendEvent(reactContext, "veloop_url_clicked", params);
+      }
+    });
+  }
+
   @ReactMethod
   public void createUserConfig(String clientId, String userId) {
     verloopConfig = new VerloopConfig(clientId, userId);
     setButtonClickListener(verloopConfig);
+    setUrlClickListener(verloopConfig);
   }
 
   @ReactMethod
   public void createAnonymousUserConfig(String clientId) {
     verloopConfig = new VerloopConfig(clientId);
     setButtonClickListener(verloopConfig);
+    setUrlClickListener(verloopConfig);
   }
 
   @ReactMethod
@@ -125,6 +138,13 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
         verloop = new Verloop(activity, verloopConfig);
       }
       verloop.showChat();
+    }
+  }
+
+  @ReactMethod
+  public void hideChat() {
+    if(verloop != null){
+      verloop.hideChat();
     }
   }
 
