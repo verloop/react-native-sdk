@@ -58,7 +58,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   }
 
   private void setUrlClickListener(VerloopConfig verloopConfig){
-    verloopConfig.getUrlClickListener(new LiveChatUrlClickListener(){
+    verloopConfig.setUrlClickListener(new LiveChatUrlClickListener(){
       public void urlClicked(String url) {
         WritableMap params = Arguments.createMap();
         params.putString("url", url);
