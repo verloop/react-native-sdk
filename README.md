@@ -10,6 +10,16 @@
 
 ### Manual installation
 
+### If you are using proguard in android add the following
+
+```
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+```
+
 
 #### iOS
 
