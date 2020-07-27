@@ -8,8 +8,6 @@
 
 `$ react-native link react-native-verloop-sdk`
 
-### Manual installation
-
 ### If you are using proguard in android add the following
 
 ```
@@ -19,6 +17,8 @@
 }
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 ```
+
+### Manual installation
 
 
 #### iOS
