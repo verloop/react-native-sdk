@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A077E707258A3C1100194B88 /* RNVerloopSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVerloopSdk.m */; };
 		A08AD79C24AB9C18005E51FB /* VerloopSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A08AD79B24AB9C18005E51FB /* VerloopSDK.framework */; };
 		A0D2791924A2347100CFD63C /* libRNVerloopSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 134814201AA4EA6300B7C361 /* libRNVerloopSdk.a */; };
-		B3E7B58A1CC2AC0600A0062D /* RNVerloopSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVerloopSdk.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNVerloopSdk.m in Sources */,
+				A077E707258A3C1100194B88 /* RNVerloopSdk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

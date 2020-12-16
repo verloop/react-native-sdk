@@ -70,6 +70,20 @@ RCT_EXPORT_METHOD(putCustomField:(NSString *)key userId:(NSString *)value)
    }
 }
 
+RCT_EXPORT_METHOD(putCustomFieldWithScope:(NSString *)key userId:(NSString *)value scope:(NSString *)scopeValue)
+{
+   if(config != nil){
+       if ([scopeValue isEqualToString:@"ROOM"]){
+           [config putCustomFieldWithKey:key value:value scope:SCOPEROOM];
+       }else if ([scopeValue isEqualToString:@"USER"]){
+            [config putCustomFieldWithKey:key value:value scope:SCOPEUSER];
+       }else{
+            [config putCustomFieldWithKey:key value:value scope:SCOPEUSER];
+       }
+
+   }
+}
+
 RCT_EXPORT_METHOD(setRecipeId:(NSString *)recipeId)
 {
    if(config != nil){
@@ -115,4 +129,4 @@ RCT_EXPORT_METHOD(hideChat)
 }
 
 @end
-  
+

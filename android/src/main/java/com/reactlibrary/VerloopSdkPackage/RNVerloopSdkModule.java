@@ -103,6 +103,19 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   }
 
   @ReactMethod
+  public void putCustomFieldWithScope(String key, String value, String scope) {
+    if (verloopConfig != null) {
+      if (scope.equals("USER")){
+        verloopConfig.putCustomField(key, value, VerloopConfig.Scope.USER);
+      }else if (scope.equals("ROOM")){
+        verloopConfig.putCustomField(key, value, VerloopConfig.Scope.ROOM);
+      }else{
+        verloopConfig.putCustomField(key, value);
+      }
+    }
+  }
+
+  @ReactMethod
   public void setRecipeId(String recipeId) {
     if (verloopConfig != null) {
       verloopConfig.setRecipeId(recipeId);
