@@ -78,6 +78,10 @@ export default class VerloopLiveChat extends Component {
         //optional
         VerloopSdk.putCustomField(key, value);
         //optional
+        VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
+        //optional
+        VerloopSdk.putCustomFieldWithScope("test2", "value2", "ROOM");
+        //optional
         VerloopSdk.setRecipeId(recipeId);
         //optional
         VerloopSdk.setUserEmail(email);
