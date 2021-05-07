@@ -5537,10 +5537,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-native-verloop-sdk@^1.0.69-rc08:
-  version "1.0.69-rc08"
-  resolved "https://registry.yarnpkg.com/react-native-verloop-sdk/-/react-native-verloop-sdk-1.0.69-rc08.tgz#f3da17f6b5237225737faf4825bd2045fea76828"
-  integrity sha512-UQpqFwKaz5CDo/K+h77fRf2pJPD8Ht5gwreHkGxalzCVeSdW2aNrlmYSp8rXxWxY4+MUdfgsBE6I4e6RK11/fw==
+react-native-verloop-sdk@^1.0.70:
+  version "1.0.70"
+  resolved "https://registry.yarnpkg.com/react-native-verloop-sdk/-/react-native-verloop-sdk-1.0.70.tgz#4f85ad7b5c21dc3fca18aa05f995a4dfef715947"
+  integrity sha512-2hcfUU97rUWdHg7yCNpzG7QE4cwKtnU8MmvZoCrYmHv/TFRBUQi5X02rhKnGYPLrQnmd1Pegiu4oJ95fv6vciA==
 
 react-native@0.62.2:
   version "0.62.2"
@@ -6638,9 +6638,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 ua-parser-js@^0.7.18:
-  version "0.7.23"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.23.tgz#704d67f951e13195fbcd3d78818577f5bc1d547b"
-  integrity sha512-m4hvMLxgGHXG3O3fQVAyyAQpZzDOvwnhOTjYz5Xmr7r/+LpkNy3vJXdVRWgd1TkAb7NGROZuSy96CrlNVjA7KA==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 uglify-es@^3.1.9:
   version "3.3.9"
