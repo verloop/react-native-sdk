@@ -25,11 +25,14 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   private VerloopConfig verloopConfig;
 
   private Verloop verloop;
+  
+  private boolean configModified;
 
   public RNVerloopSdkModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
     reactContext.addLifecycleEventListener(this);
+    this.configModified = false;
   }
 
   @Override
@@ -55,6 +58,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
         sendEvent(reactContext, "veloop_button_clicked", params);
       }
     });
+    configModified = true;
   }
 
   private void setUrlClickListener(VerloopConfig verloopConfig){
@@ -65,6 +69,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
         sendEvent(reactContext, "veloop_url_clicked", params);
       }
     });
+    configModified = true;
   }
 
   @ReactMethod
@@ -72,6 +77,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
     verloopConfig = new VerloopConfig(clientId, userId);
     setButtonClickListener(verloopConfig);
     setUrlClickListener(verloopConfig);
+    configModified = true;
   }
 
   @ReactMethod
@@ -79,12 +85,14 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
     verloopConfig = new VerloopConfig(clientId);
     setButtonClickListener(verloopConfig);
     setUrlClickListener(verloopConfig);
+    configModified = true;
   }
 
   @ReactMethod
   public void setFcmToken(String token) {
     if (verloopConfig != null) {
       verloopConfig.setFcmToken(token);
+      configModified = true;
     }
   }
 
@@ -99,6 +107,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   public void putCustomField(String key, String value) {
     if (verloopConfig != null) {
       verloopConfig.putCustomField(key, value);
+      configModified = true;
     }
   }
 
@@ -112,6 +121,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
       }else{
         verloopConfig.putCustomField(key, value);
       }
+      configModified = true;
     }
   }
 
@@ -119,6 +129,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   public void setRecipeId(String recipeId) {
     if (verloopConfig != null) {
       verloopConfig.setRecipeId(recipeId);
+      configModified = true;
     }
   }
 
@@ -126,6 +137,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   public void setUserEmail(String userEmail) {
     if (verloopConfig != null) {
       verloopConfig.setUserEmail(userEmail);
+      configModified = true;
     }
   }
 
@@ -133,6 +145,7 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   public void setUserName(String userName) {
     if (verloopConfig != null) {
       verloopConfig.setUserName(userName);
+      configModified = true;
     }
   }
 
@@ -140,15 +153,17 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
   public void setUserPhone(String userPhone) {
     if (verloopConfig != null) {
       verloopConfig.setUserPhone(userPhone);
+      configModified = true;
     }
   }
 
   @ReactMethod
   public void showChat() {
     if (verloopConfig != null) {
-      if(verloop == null){
+      if(verloop == null || configModified){
         final Activity activity = getCurrentActivity();
         verloop = new Verloop(activity, verloopConfig);
+        configModified = false;
       }
       verloop.showChat();
     }
