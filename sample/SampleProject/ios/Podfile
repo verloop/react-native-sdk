@@ -77,7 +77,8 @@ target 'SampleProject' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNVerloopSdk', :path => '../node_modules/react-native-verloop-sdk/ios'
+
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
 
   target 'SampleProjectTests' do
     inherit! :complete

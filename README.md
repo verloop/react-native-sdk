@@ -158,7 +158,9 @@ import { AsyncStorage } from 'react-native';
 export default class VerloopLiveChat extends Component {
 
     async componentDidMount() {
+        
         const token = await checkPermissionAndGetToken();
+
         if(token != null){
           await VerloopSdk.setFcmToken(token);
         }

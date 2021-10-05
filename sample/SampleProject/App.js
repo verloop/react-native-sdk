@@ -30,6 +30,7 @@ const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
+      <Text>Hello</Text>
       <SafeAreaView>
         <VerloopLiveChat></VerloopLiveChat>
       </SafeAreaView>
