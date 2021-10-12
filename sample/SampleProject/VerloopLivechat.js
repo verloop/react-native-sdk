@@ -72,7 +72,7 @@ export default class VerloopLiveChat extends Component {
         const notification: Notification = notificationOpen.notification;
     }
         
-      await VerloopSdk.createAnonymousUserConfig('hello.dev');
+      await VerloopSdk.createAnonymousUserConfig('hello.stage');
 
 
       // const eventEmitter = new NativeEventEmitter(VerloopSdk);

@@ -18,6 +18,9 @@ import io.verloop.sdk.LiveChatButtonClickListener;
 import io.verloop.sdk.LiveChatUrlClickListener;
 import io.verloop.sdk.VerloopConfig;
 
+import android.util.Log;
+
+
 public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
   private final ReactApplicationContext reactContext;
@@ -83,8 +86,20 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
 
   @ReactMethod
   public void setFcmToken(String token) {
+    Log.d("Passing FCM Token Config Check",token);
     if (verloopConfig != null) {
+      Log.d("Passing FCM Token", token);
       verloopConfig.setFcmToken(token);
+    }
+  }
+
+
+  @ReactMethod
+  public void getFcmToken(String token) {
+    Log.d("Getting FCM Token Config Check",token);
+    if (verloopConfig != null) {
+      Log.d("Passing FCM Token", token);
+      verloopConfig.getFcmToken(token);
     }
   }
 
@@ -132,11 +147,13 @@ public class RNVerloopSdkModule extends ReactContextBaseJavaModule implements Li
 
   @ReactMethod
   public void showChat() {
+    Log.d("Show Chat", verloopConfig);
     if (verloopConfig != null) {
       if(verloop == null){
         final Activity activity = getCurrentActivity();
         verloop = new Verloop(activity, verloopConfig);
       }
+      
       verloop.showChat();
     }
   }
