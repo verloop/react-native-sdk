@@ -13,7 +13,7 @@
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-firebase": "^5.6.0",
-    "react-native-verloop-sdk": "^1.0.67"
+    "react-native-verloop-sdk": "v1.0.71-rc2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

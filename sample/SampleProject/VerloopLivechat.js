@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import VerloopSdk from 'react-native-verloop-sdk';
 import firebase from 'react-native-firebase';
 
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  Button
+} from 'react-native';
+
 import type { RemoteMessage } from 'react-native-firebase';
 
 import { AsyncStorage } from 'react-native';
@@ -24,6 +34,9 @@ export default class VerloopLiveChat extends Component {
     async componentDidMount() {
 
       // Error in calling checkPermissions
+
+      await VerloopSdk.createAnonymousUserConfig('hello.stage');
+
 
       const token = await this.checkPermissionAndGetToken();
 
@@ -71,9 +84,6 @@ export default class VerloopLiveChat extends Component {
         // Get information about the notification that was opened
         const notification: Notification = notificationOpen.notification;
     }
-        
-      await VerloopSdk.createAnonymousUserConfig('hello.stage');
-
 
       // const eventEmitter = new NativeEventEmitter(VerloopSdk);
       // this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
