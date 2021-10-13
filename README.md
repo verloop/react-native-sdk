@@ -158,12 +158,15 @@ import { AsyncStorage } from 'react-native';
 export default class VerloopLiveChat extends Component {
 
     async componentDidMount() {
+
+        await VerloopSdk.createAnonymousUserConfig('hello.stage');
+
+
         const token = await checkPermissionAndGetToken();
         if(token != null){
           await VerloopSdk.setFcmToken(token);
         }
           
-        await VerloopSdk.createAnonymousUserConfig('hello.stage');
         VerloopSdk.showChat();
     }
    
