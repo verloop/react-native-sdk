@@ -1,8 +1,9 @@
 {
   "name": "react-native-verloop-sdk",
   "title": "React Native Verloop Sdk",
-  "version": "1.0.72-rc1",
+  "version": "1.0.72-rc2",
   "description": "TODO",
+  "homepage": "https://github.com/verloop/react-native-sdk#readme",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
