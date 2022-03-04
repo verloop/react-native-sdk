@@ -5,8 +5,6 @@ import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.reactlibrary.VerloopSdkPackage.RNVerloopSdkPackage;
 import com.reactlibrary.VerloopSdkPackage.RNVerloopSdkPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -40,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
         // protected List<ReactPackage> getPackages() {
         //   return Arrays.<ReactPackage>asList(
         //   new MainReactPackage(),
+        //    new RNFirebasePackage(),
         //    new RNFirebasePackage(),
         //   new RNFirebasePackage(),
         //   new RNFirebaseMessagingPackage(),

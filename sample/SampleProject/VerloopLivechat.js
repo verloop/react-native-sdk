@@ -35,7 +35,7 @@ export default class VerloopLiveChat extends Component {
 
       // Error in calling checkPermissions
 
-      await VerloopSdk.createAnonymousUserConfig('hello.stage');
+      await VerloopSdk.createAnonymousUserConfig('masterreport');
 
 
       const token = await this.checkPermissionAndGetToken();
@@ -49,7 +49,7 @@ export default class VerloopLiveChat extends Component {
       this.messageListener = firebase.messaging().onMessage((message: RemoteMessage) => {
         // Process your message as required
 
-        console.log("Recieved Message: ", message)
+        console.log("Foreground Recieved Message: ", message)
       });
 
       this.removeNotificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen: NotificationOpen) => {

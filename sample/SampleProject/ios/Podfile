@@ -79,6 +79,8 @@ target 'SampleProject' do
 
 
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'SampleProjectTests' do
     inherit! :complete
     # Pods for testing
