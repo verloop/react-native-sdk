@@ -1,7 +1,7 @@
 {
   "name": "react-native-verloop-sdk",
   "title": "React Native Verloop Sdk",
-  "version": "v1.0.71-rc7",
+  "version": "v1.0.71-rc9",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
