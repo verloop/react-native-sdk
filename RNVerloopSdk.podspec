@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author             = { "author" => "raghav@verloop.io" }
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/verloop/react-native-sdk.git", :tag => "master" }
-  s.source_files  = "RNVerloopSdk/**/*.{h,m}"
+  s.source_files  = "ios/RNVerloopSdk/**/*.{h,m}"
   s.requires_arc = true
   s.vendored_frameworks = "VerloopSDK.framework"
 
