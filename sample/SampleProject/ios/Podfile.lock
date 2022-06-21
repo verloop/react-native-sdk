@@ -345,7 +345,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/callinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNVerloopSdk (from `../node_modules/react-native-verloop-sdk/ios`)
+  - RNVerloopSdk (from `../../../ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -413,7 +413,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNVerloopSdk:
-    :path: "../node_modules/react-native-verloop-sdk/ios"
+    :path: "../../../ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -457,6 +457,6 @@ SPEC CHECKSUMS:
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 169edb552d3bb7cefdc99dc6ca4b76f376fccdd4
+PODFILE CHECKSUM: e9072390b36e8888ebf10afef862b4e6101077d1
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3

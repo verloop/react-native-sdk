@@ -1,7 +1,7 @@
 
 #import "RNVerloopSdk.h"
-#import <React/RCTLog.h>
-#import <VerloopSDK/VerloopSDK-Swift.h>
+
+@import VerloopSDKiOS;
 
 @implementation RNVerloopSdk
 
@@ -117,7 +117,6 @@ RCT_EXPORT_METHOD(showChat)
    if(config != nil){
        printf("came to showChat");
        verloop = [[VerloopSDK alloc] initWithConfig:config];
-       [verloop start];
    }
 }
 
