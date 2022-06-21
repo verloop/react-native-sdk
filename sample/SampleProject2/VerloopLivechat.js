@@ -6,6 +6,9 @@ export default class VerloopLiveChat extends Component {
 
 
     async componentDidMount() {
+
+        console.log("Inside component did mount")
+
         const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
         const userId = "raghav"; // it is the unique userID to identify all the chats for this user
 
@@ -13,21 +16,21 @@ export default class VerloopLiveChat extends Component {
         //or
         VerloopSdk.createUserConfig(clientId, userId);
 
-        const eventEmitter = new NativeEventEmitter(VerloopSdk);
-        this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
-           console.log(event.title);
-           console.log(event.type);
-           console.log(event.payload);
-        });
+        // const eventEmitter = new NativeEventEmitter(VerloopSdk);
+        // this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
+        //    console.log(event.title);
+        //    console.log(event.type);
+        //    console.log(event.payload);
+        // });
         
-        this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
-           console.log(event.url);
-        });
+        // this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
+        //    console.log(event.url);
+        // });
 
         //optional
 //        VerloopSdk.putCustomField(key, value);
         //optional
-        VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
+        //VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
 //        //optional
 //        VerloopSdk.setRecipeId(recipeId);
 //        //optional
@@ -39,6 +42,8 @@ export default class VerloopLiveChat extends Component {
 
         VerloopSdk.showChat();
 
+        console.log("Show chat")
+
 //        VerloopSdk.hideChat();
     }
 
@@ -46,6 +51,6 @@ export default class VerloopLiveChat extends Component {
         return null;
     }
     componentWillUnmount() {
-        this.eventListener.remove(); //Removes the listener
+       // this.eventListener.remove(); //Removes the listener
     }
 }

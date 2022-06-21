@@ -1,6 +1,7 @@
 
-#import "RNVerloopSdk.h"
+#import <React/RCTLog.h>
 
+#import "RNVerloopSdk.h"
 @import VerloopSDKiOS;
 
 @implementation RNVerloopSdk
@@ -24,6 +25,8 @@ VerloopSDK *verloop;
 
 RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId )
 {
+
+    RCTLogInfo(@"Creating User Config %@ at %@", clientId, userId);
     config = [[VLConfig alloc] initWithClientId:clientId userId:userId];
     [config setButtonOnClickListenerOnButtonClicked:^(NSString *title, NSString *type, NSString *payload){
         [self sendEventWithName:@"veloop_button_clicked" body:@{@"title": title, @"type": type, @"payload": payload }];
@@ -117,6 +120,7 @@ RCT_EXPORT_METHOD(showChat)
    if(config != nil){
        printf("came to showChat");
        verloop = [[VerloopSDK alloc] initWithConfig:config];
+
    }
 }
 
