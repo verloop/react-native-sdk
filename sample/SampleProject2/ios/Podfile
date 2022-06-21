@@ -19,7 +19,6 @@ target 'SampleProject2' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  pod 'RNVerloopSdk', :path => '../node_modules/react-native-verloop-sdk'
 
   target 'SampleProject2Tests' do
     inherit! :complete

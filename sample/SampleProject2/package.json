@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-native": "0.68.2",
+    "react-native-verloop-sdk": "^1.0.72-rc9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
