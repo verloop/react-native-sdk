@@ -7,7 +7,7 @@ export default class VerloopLiveChat extends Component {
 
     async componentDidMount() {
 
-        console.log("Inside component did mount")
+        console.log(VerloopSdk)
 
         const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
         const userId = "raghav"; // it is the unique userID to identify all the chats for this user

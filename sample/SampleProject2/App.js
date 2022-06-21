@@ -6,7 +6,9 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
+
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +16,8 @@ import {
   View,
   Text,
   StatusBar,
+  Alert,
+  Button
 } from 'react-native';
 
 import {
@@ -27,11 +31,21 @@ import {
 import VerloopLiveChat from './VerloopLivechat';
 
 const App: () => React$Node = () => {
+
+  const [shouldShow, setShouldShow] = useState(false);
+
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <VerloopLiveChat></VerloopLiveChat>
+        <Text>Hello</Text>
+        <View>
+          <Button title="Show Livechat"           
+          onPress={() => setShouldShow(!shouldShow)
+          }/>
+        </View>
+        {shouldShow? (<VerloopLiveChat></VerloopLiveChat>) : null}
       </SafeAreaView>
     </>
   );

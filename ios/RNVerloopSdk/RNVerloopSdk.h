@@ -1,6 +1,8 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RNVerloopSdk : RCTEventEmitter <RCTBridgeModule>
+@import VerloopSDKiOS;
+
+@interface RNVerloopSdk : RCTEventEmitter <RCTBridgeModule, VLEventDelegate>
 
 @end

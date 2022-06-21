@@ -2,7 +2,8 @@
 #import <React/RCTLog.h>
 
 #import "RNVerloopSdk.h"
-@import VerloopSDKiOS;
+
+@import UIKit;
 
 @implementation RNVerloopSdk
 
@@ -22,6 +23,10 @@ typedef void (^LiveChatUrlClickListener)(NSString *);
 
 VLConfig *config;
 VerloopSDK *verloop;
+
+UIWindow * prev;
+UIWindow * win;
+
 
 RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId )
 {
@@ -118,17 +123,45 @@ RCT_EXPORT_METHOD(setUserPhone:(NSString *)userPhone)
 RCT_EXPORT_METHOD(showChat)
 {
    if(config != nil){
-       printf("came to showChat");
        verloop = [[VerloopSDK alloc] initWithConfig:config];
-
+       [verloop observeLiveChatEventsOnVlEventDelegate:self];
+       prev =  [[[UIApplication sharedApplication] delegate] window];
+       win = [[UIWindow alloc] init];
+       win.backgroundColor = [UIColor blackColor];
+       win.frame = UIScreen.mainScreen.bounds;
+       win.windowLevel = UIWindowLevelNormal + 1;
+       win.rootViewController = [verloop getNavController];
+       [win makeKeyAndVisible];
    }
 }
 
 RCT_EXPORT_METHOD(hideChat)
 {
-   if(verloop != nil){
+   if(verloop != nil && prev != nil){
        [verloop hide];
    }
+}
+
+- (void) onChatMinimized{
+    
+    RCTLogInfo(@"Chat Minimized");
+    [win resignKeyWindow];
+    [prev makeKeyAndVisible];
+    prev = nil;
+        
+    win.windowLevel = UIWindowLevelNormal - 10;
+}
+
+- (void) onChatMaximized{
+    RCTLogInfo(@"Chat Maximized");
+}
+
+-(void) onChatStarted{
+    RCTLogInfo(@"Chat Started");
+}
+
+-(void) onChatEnded{
+    RCTLogInfo(@"Chat Ended");
 }
 
 @end
