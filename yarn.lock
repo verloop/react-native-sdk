@@ -3811,6 +3811,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   "version" "0.0.6"
 
+"react-native-verloop-sdk@^1.0.72-rc11":
+  "integrity" "sha512-ZWP/z+9qYGsFzMnmLrA0N0GwJtHnnpjT7BQ3VPE+0ugZWFFF0xtHvXfLMMQEM5edRTBToswKdle4Fch1Y8FXdQ=="
+  "resolved" "https://registry.npmjs.org/react-native-verloop-sdk/-/react-native-verloop-sdk-1.0.72-rc11.tgz"
+  "version" "1.0.72-rc11"
+
 "react-native@*", "react-native@^0.68.2":
   "integrity" "sha512-qNMz+mdIirCEmlrhapAtAG+SWVx6MAiSfCbFNhfHqiqu1xw1OKXdzIrjaBEPihRC2pcORCoCHduHGQe/Pz9Yuw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.68.2.tgz"
