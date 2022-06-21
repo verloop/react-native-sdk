@@ -66,7 +66,7 @@ RCT_EXPORT_METHOD(setFcmToken:(NSString *)token)
    }
 }
 
-RCT_EXPORT_METHOD(setStaging:(Boolean) isStaging)
+RCT_EXPORT_METHOD(setStaging:(BOOL) isStaging)
 {
    if(config != nil){
        RCTLogInfo(@"Setting Staging");
