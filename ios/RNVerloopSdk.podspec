@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNVerloopSdk"
-  s.version      = "1.0.71"
+  s.version      = "1.0.72-rc14"
   s.summary      = "RNVerloopSdk"
   s.description  = <<-DESC
                   This is a wrapper over the verloop iOS SDk.
