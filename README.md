@@ -18,17 +18,17 @@
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 ```
 
-### Manual installation
+### Installation
 
 
-#### iOS
+#### iOS - Cocoapods
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2. Go to `node_modules` ➜ `react-native-verloop-sdk` and add `VerloopSdk.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libVerloopSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
-#### Android
+#### Android - Manual
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.VerloopSdkPackage;` to the imports at the top of the file
