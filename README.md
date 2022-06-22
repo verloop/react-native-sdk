@@ -19,7 +19,7 @@
 
 #### iOS - Cocoapods
 
-1. Go to `ios/` and run pod install. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS` 
+1. Go to `ios` and run `pod install`. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS`. You should be good to go.  
 
 #### Android - Manual
 
@@ -36,10 +36,6 @@
       compile project(':react-native-verloop-sdk')
   	```
 
-#### Additional iOS step:
-
-* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
-* Run pod install in the same folder
 
 ## Usage
 ```javascript
@@ -51,7 +47,7 @@ export default class VerloopLiveChat extends Component {
 
 
     async componentDidMount() {
-        const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
+        const clientId = "hello"; // it is same as https://<YOUR CLIENT ID>.verloop.io
         const userId = "raghav"; // it is the unique userID to identify all the chats for this user
 
         // VerloopSdk.createAnonymousUserConfig(clientId);
