@@ -1,7 +1,7 @@
 {
   "name": "react-native-verloop-sdk",
   "title": "React Native Verloop Sdk",
-  "version": "1.0.71",
+  "version": "1.0.72-rc14",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
@@ -22,8 +22,7 @@
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
-
   "peerDependencies": {
-    "react-native": "^0.62.2"
+    "react-native": "^0.68.2"
   }
 }

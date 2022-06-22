@@ -44,3 +44,7 @@ buck-out/
 \.buckd/
 *.keystore
       
+
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
