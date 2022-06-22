@@ -19,7 +19,7 @@
 
 #### iOS - Cocoapods
 
-1. Go to `ios` and run `pod install`. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS`. You should be good to go.  
+1. After adding the dependency `react-native-verloop-sdk` in `package.json` and running `npm install`, go to `ios` subdirectory and run `pod install`. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS`. You should be good to go.  
 
 #### Android - Manual
 
