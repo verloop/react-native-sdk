@@ -4,10 +4,6 @@
 
 `$ npm install react-native-verloop-sdk --save`
 
-### Mostly automatic installation
-
-`$ react-native link react-native-verloop-sdk`
-
 ### If you are using proguard in android add the following
 
 ```
@@ -23,10 +19,7 @@
 
 #### iOS - Cocoapods
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-verloop-sdk` and add `VerloopSdk.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libVerloopSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1. Go to `ios/` and run pod install. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS` 
 
 #### Android - Manual
 
