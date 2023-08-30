@@ -1,5 +1,3 @@
-# react-native-verloop-sdk
-
 ## Getting started
 
 `$ npm install react-native-verloop-sdk --save`
