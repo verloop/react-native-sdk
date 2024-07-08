@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SampleProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SampleProjectTests.m */; };
-		0BD59147037C05F16912894A /* libPods-SampleProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9646950DAC36F519A7405F7 /* libPods-SampleProject.a */; };
+		021B0F73120A50F4EA107B80 /* libPods-SampleProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C993A4EB1FB8AB8DEB0150 /* libPods-SampleProject.a */; };
+		02C6596D9CC879D3EEF6040F /* libPods-SampleProject-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 935A9C50B46B4D3B5520D1B3 /* libPods-SampleProject-tvOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -17,9 +18,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SampleProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SampleProjectTests.m */; };
-		342F7DF9095339DF0518953B /* libPods-SampleProject-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F38012D74A8831880585C82 /* libPods-SampleProject-tvOS.a */; };
-		BB2397377053FF25B53B35FB /* libPods-SampleProject-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B91F06C3219EC99EA5A3271 /* libPods-SampleProject-tvOSTests.a */; };
-		BE09558C1DC72ABFF20BC682 /* libPods-SampleProject-SampleProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A791A0DF68A73349DCAD3AF0 /* libPods-SampleProject-SampleProjectTests.a */; };
+		6BD9004A91089B3DB7496D9A /* libPods-SampleProject-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E22EAB9C42B5424D8E13F /* libPods-SampleProject-tvOSTests.a */; };
+		F58B48BC754FC167018108F9 /* libPods-SampleProject-SampleProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12070A97C097125AECA39729 /* libPods-SampleProject-SampleProjectTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +45,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SampleProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleProjectTests.m; sourceTree = "<group>"; };
 		02C582F6692C8752B28A0E7A /* Pods-SampleProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject.debug.xcconfig"; path = "Target Support Files/Pods-SampleProject/Pods-SampleProject.debug.xcconfig"; sourceTree = "<group>"; };
+		12070A97C097125AECA39729 /* libPods-SampleProject-SampleProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-SampleProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SampleProject/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SampleProject/AppDelegate.m; sourceTree = "<group>"; };
@@ -55,18 +56,16 @@
 		278B7BAC662FB893A3514989 /* Pods-SampleProject-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SampleProject-tvOS/Pods-SampleProject-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SampleProject-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleProject-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SampleProject-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SampleProject-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F38012D74A8831880585C82 /* libPods-SampleProject-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0A77B0FD8C1EA15454B37B /* Pods-SampleProject-SampleProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-SampleProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-SampleProject-SampleProjectTests/Pods-SampleProject-SampleProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		73C993A4EB1FB8AB8DEB0150 /* libPods-SampleProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CFBADFFC324FE170C65473 /* Pods-SampleProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject.release.xcconfig"; path = "Target Support Files/Pods-SampleProject/Pods-SampleProject.release.xcconfig"; sourceTree = "<group>"; };
-		7B91F06C3219EC99EA5A3271 /* libPods-SampleProject-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		822F986FCA459D115BB7E1D5 /* Pods-SampleProject-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SampleProject-tvOS/Pods-SampleProject-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8C5E0B04A9A8EDFE7FCE735D /* Pods-SampleProject-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SampleProject-tvOSTests/Pods-SampleProject-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		A791A0DF68A73349DCAD3AF0 /* libPods-SampleProject-SampleProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-SampleProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		935A9C50B46B4D3B5520D1B3 /* libPods-SampleProject-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90BBA29159086BA1252446D /* Pods-SampleProject-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SampleProject-tvOSTests/Pods-SampleProject-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E78E22EAB9C42B5424D8E13F /* libPods-SampleProject-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F459586EEE5BB1449B67B3B8 /* Pods-SampleProject-SampleProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject-SampleProjectTests.release.xcconfig"; path = "Target Support Files/Pods-SampleProject-SampleProjectTests/Pods-SampleProject-SampleProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		F9646950DAC36F519A7405F7 /* libPods-SampleProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE09558C1DC72ABFF20BC682 /* libPods-SampleProject-SampleProjectTests.a in Frameworks */,
+				F58B48BC754FC167018108F9 /* libPods-SampleProject-SampleProjectTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BD59147037C05F16912894A /* libPods-SampleProject.a in Frameworks */,
+				021B0F73120A50F4EA107B80 /* libPods-SampleProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342F7DF9095339DF0518953B /* libPods-SampleProject-tvOS.a in Frameworks */,
+				02C6596D9CC879D3EEF6040F /* libPods-SampleProject-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB2397377053FF25B53B35FB /* libPods-SampleProject-tvOSTests.a in Frameworks */,
+				6BD9004A91089B3DB7496D9A /* libPods-SampleProject-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +133,6 @@
 				D90BBA29159086BA1252446D /* Pods-SampleProject-tvOSTests.debug.xcconfig */,
 				8C5E0B04A9A8EDFE7FCE735D /* Pods-SampleProject-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,11 +154,10 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				F9646950DAC36F519A7405F7 /* libPods-SampleProject.a */,
-				A791A0DF68A73349DCAD3AF0 /* libPods-SampleProject-SampleProjectTests.a */,
-				5F38012D74A8831880585C82 /* libPods-SampleProject-tvOS.a */,
-				7B91F06C3219EC99EA5A3271 /* libPods-SampleProject-tvOSTests.a */,
+				73C993A4EB1FB8AB8DEB0150 /* libPods-SampleProject.a */,
+				12070A97C097125AECA39729 /* libPods-SampleProject-SampleProjectTests.a */,
+				935A9C50B46B4D3B5520D1B3 /* libPods-SampleProject-tvOS.a */,
+				E78E22EAB9C42B5424D8E13F /* libPods-SampleProject-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -668,7 +665,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
@@ -695,6 +697,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SampleProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
