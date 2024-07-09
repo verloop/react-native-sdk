@@ -1,0 +1,6 @@
+module Pods_VerloopSdkExample_VerloopSdkExampleTests {
+  umbrella header "Pods-VerloopSdkExample-VerloopSdkExampleTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

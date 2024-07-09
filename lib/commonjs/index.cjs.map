@@ -1,0 +1,1 @@
+{"version":3,"names":["_reactNative","require","RNVerloopSdk","NativeModules","VerloopSdk","_default","exports","default"],"sourceRoot":"../../src","sources":["index.tsx"],"mappings":";;;;;;AAAA,IAAAA,YAAA,GAAAC,OAAA;AAEA,MAAM;EAAEC;AAAa,CAAC,GAAGC,0BAAa;AAEtC,MAAMC,UAAU,GAAGF,YAAY;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEjBH,UAAU","ignoreList":[]}

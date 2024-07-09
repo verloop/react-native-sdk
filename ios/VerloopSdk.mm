@@ -1,0 +1,13 @@
+
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
+
+@interface  RCT_EXTERN_MODULE(RNVerloopSdk, NSObject)
+//RCT_EXPORT_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId)
+//RCT_EXPORT_METHOD(createAnonymousUserConfig:(NSString *)clientId){}
+//RCT_EXPORT_METHOD(putCustomFieldWithScope:(NSString *)key value:(NSString *)value scope:(NSString *)scope){}
+//RCT_EXPORT_METHOD(showChat)
+RCT_EXTERN_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userId)
+RCT_EXTERN_METHOD(showChat)
+@end
