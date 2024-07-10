@@ -49,7 +49,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.verloopsdk"
+    namespace "com.reactlibrary.VerloopSdkPackage"
 
     sourceSets {
       main {
@@ -83,8 +83,10 @@ android {
 }
 
 repositories {
-  mavenCentral()
-  google()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    google()
+    jcenter()
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
@@ -95,5 +97,6 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation 'com.github.verloop:android-sdk:1.1.15'
 }
 
