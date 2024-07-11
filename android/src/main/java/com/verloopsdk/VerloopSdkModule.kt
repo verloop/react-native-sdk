@@ -20,7 +20,7 @@ import io.verloop.sdk.VerloopConfig
 
 class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
-    private var verloopConfig: VerloopConfig? = null
+    private var verloopConfig: VerloopConfig.Builder? = null
     private var verloop: Verloop? = null
     private var configModified: Boolean = false
 
@@ -38,7 +38,7 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
     }
 
     private fun setButtonClickListener(verloopConfig: VerloopConfig) {
-        verloopConfig?.setButtonClickListener(object : LiveChatButtonClickListener {
+        verloopConfig.setButtonClickListener(object : LiveChatButtonClickListener {
             override fun buttonClicked(title: String?, type: String?, payload: String?) {
                 if (type == "web_url") {
                     val params = Arguments.createMap()
@@ -50,17 +50,10 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
             }
         })
         configModified = true
-//        verloopConfig.setButtonOnClickListener { title, type, payload ->
-//            val params = Arguments.createMap()
-//            params.putString("title", title)
-//            params.putString("type", type)
-//            params.putString("payload", payload)
-//            sendEvent(reactContext, "veloop_button_clicked", params)
-//        }
     }
 
     private fun setUrlClickListener(verloopConfig: VerloopConfig) {
-        verloopConfig?.setUrlClickListener(object : LiveChatUrlClickListener {
+        verloopConfig.setUrlClickListener(object : LiveChatUrlClickListener {
             override fun urlClicked(url: String?) {
                 val params = Arguments.createMap()
                 params.putString("url", url)
@@ -79,32 +72,35 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
     fun createUserConfig(clientId: String, userId: String) {
         verloopConfig = VerloopConfig.Builder()
             .clientId(clientId)
-            .userId(userId).build()
-        setButtonClickListener(verloopConfig!!)
-        setUrlClickListener(verloopConfig!!)
+            .userId(userId)
+        //setButtonClickListener(verloopConfig!!)
+        //setUrlClickListener(verloopConfig!!)
         configModified = true
     }
 
     @ReactMethod
     fun createAnonymousUserConfig(clientId: String) {
-        verloopConfig = VerloopConfig.Builder().clientId(clientId).build()
-        setButtonClickListener(verloopConfig!!)
-        setUrlClickListener(verloopConfig!!)
+        verloopConfig = VerloopConfig.Builder().clientId(clientId)
+        //setButtonClickListener(verloopConfig!!)
+        //setUrlClickListener(verloopConfig!!)
         configModified = true
     }
 
-    // @ReactMethod
-    // fun setFcmToken(token: String) {
-    //     verloopConfig?.let {
-    //         it.setFcmToken(token)
-    //         configModified = true
-    //     }
-    // }
+     @ReactMethod
+     fun setFcmToken(token: String) {
+         verloopConfig?.let {
+             it.fcmToken = token
+             configModified = true
+         }
+     }
 
-    // @ReactMethod
-    // fun setStaging(isStaging: Boolean) {
-    //     verloopConfig?.setStaging(isStaging)
-    // }
+     @ReactMethod
+     fun setStaging(isStaging: Boolean) {
+         verloopConfig?.let {
+             it.isStaging = isStaging
+             configModified = true
+         }
+     }
 
     @ReactMethod
     fun putCustomField(key: String, value: String) {
@@ -160,16 +156,17 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
 
     @ReactMethod
     fun showChat() {
-        verloopConfig?.let {
-            if (verloop == null || configModified) {
-                val activity: Activity? = currentActivity
-                if (activity != null) {
-                    verloop = Verloop(activity, it)
-                    configModified = false
-                }
+        val config = verloopConfig?.build()
+        setButtonClickListener(config!!)
+        setUrlClickListener(config!!)
+        if (verloop == null || configModified) {
+            val activity: Activity? = currentActivity
+            if (activity != null) {
+                verloop = Verloop(activity, config)
+                configModified = false
             }
-            verloop?.showChat()
         }
+        verloop?.showChat()
     }
 
     override fun onHostResume() {

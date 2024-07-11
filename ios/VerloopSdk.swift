@@ -41,6 +41,8 @@ public class RNVerloopSdk : RCTEventEmitter {
     
     @objc(createAnonymousUserConfig:)
     func createAnonymousUserConfig(clientId:String) -> Void {
+       // print("clientId -> \(clientId)")
+        debugPrint("clientId -> \(clientId)")
         config = VLConfig.init(clientId:clientId)
         config?.setButtonOnClickListener { title, type, payload in
             let values : [String] = [title ?? "", type ?? "", payload ?? ""]
@@ -110,8 +112,18 @@ public class RNVerloopSdk : RCTEventEmitter {
         if config != nil {
             DispatchQueue.main.async {
                 self.verloop = VerloopSDK(config: self.config!)
+                debugPrint("verloop config -> \(self.config!)")
                 let cntrl = self.verloop!.getNavController()
                 self.topViewController()?.present(cntrl, animated: false)
+            }
+        }
+    }
+
+    @objc
+    func clearChat() {
+        if config != nil {
+            DispatchQueue.main.async {
+                self.verloop?.clearConfig()
             }
         }
     }
@@ -130,6 +142,6 @@ public class RNVerloopSdk : RCTEventEmitter {
     }
     
     @objc public override static func requiresMainQueueSetup() -> Bool {
-        return false
+        return true
     }
 }

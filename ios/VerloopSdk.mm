@@ -12,4 +12,5 @@ RCT_EXTERN_METHOD(setUserEmail:(NSString *)userEmail)
 RCT_EXTERN_METHOD(setUserPhone:(NSString *)userPhone)
 RCT_EXTERN_METHOD(setUserName:(NSString *)userName)
 RCT_EXTERN_METHOD(showChat)
+RCT_EXTERN_METHOD(clearChat)
 @end

@@ -6020,7 +6020,7 @@ react-native-builder-bob@^0.25.0:
 "react-native-verloop-sdk@file:../react-native-verloop-sdk-0.1.0.tgz":
   version "0.1.0"
   resolved "file:react-native-verloop-sdk-0.1.0.tgz"
-  integrity sha512-Rtp5Qph3o1b7JGvmWZF4/j3vQRCbhrwLb7PJhFaO5sk/IaIWB3OLHe1/1IGPGlMTFxnPgyKFgsLpIEHhfqN3lA==
+  integrity sha512-F1+Msu09FVy2ePQOUW9HRCjCfnUT3hG4cQYi9ASCDkdZNAAuOfn78Dn+FM08MRcSudIogCLmE9s0Wujy9JVEag==
 
 react-native@*, react-native@0.74.3:
   version "0.74.3"
