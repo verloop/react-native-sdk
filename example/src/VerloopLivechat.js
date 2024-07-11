@@ -6,30 +6,28 @@ export default class VerloopLiveChat extends Component {
 
 
     async componentDidMount() {
-        const clientId = "tarun"; // it is same as https://<YOUR COMPANY ID>.verloop.io
+        const clientId = "reactnative"; // it is same as https://<YOUR COMPANY ID>.verloop.io
         const userId = "raghav"; // it is the unique userID to identify all the chats for this user
 
         // VerloopSdk.createAnonymousUserConfig(clientId);
         //or
         VerloopSdk.createUserConfig(clientId, userId);
 
-        // const eventEmitter = new NativeEventEmitter(VerloopSdk);
-        // this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
-        //    console.log(event.title);
-        //    console.log(event.type);
-        //    console.log(event.payload);
-        // });
+         const eventEmitter = new NativeEventEmitter(VerloopSdk);
+        this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
+           console.log("");
+           console.log("");
+           console.log("");
+        });
         
-        // this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
-        //    console.log(event.url);
-        // });
+        this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
+           //console.log(event.url);
+        });
 
         //optional
-//        VerloopSdk.putCustomField(key, value);
-        //optional
         //VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
-//        //optional
-//        VerloopSdk.setRecipeId(recipeId);
+        //optional
+//       VerloopSdk.setRecipeId(recipeId);
 //        //optional
 //        VerloopSdk.setUserEmail(email);
 //        //optional
@@ -39,7 +37,7 @@ export default class VerloopLiveChat extends Component {
 
         VerloopSdk.showChat();
 
-//        VerloopSdk.hideChat();
+///       VerloopSdk.hideChat();
     }
 
     render() {
