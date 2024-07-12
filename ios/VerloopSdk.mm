@@ -13,4 +13,11 @@ RCT_EXTERN_METHOD(setUserPhone:(NSString *)userPhone)
 RCT_EXTERN_METHOD(setUserName:(NSString *)userName)
 RCT_EXTERN_METHOD(showChat)
 RCT_EXTERN_METHOD(clearChat)
+RCT_EXTERN_METHOD(logOut)
+RCT_EXTERN_METHOD(openWidget)
+RCT_EXTERN_METHOD(closeWidget)
+RCT_EXTERN_METHOD(enableiOSNotification:(NSString *)notificatioDeviceToken)
+RCT_EXTERN_METHOD(setUserId:(NSString *)userId)
+
+
 @end

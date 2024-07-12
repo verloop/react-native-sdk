@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
+import Toast from 'react-native-simple-toast'
 
 export default class VerloopLiveChat extends Component {
   async componentDidMount() {
@@ -11,7 +12,6 @@ export default class VerloopLiveChat extends Component {
     //or
     VerloopSdk.createAnonymousUserConfig(clientId);
     console.log('createAnonymousUserConfig');
-    //VerloopSdk.clearChat()
      const eventEmitter = new NativeEventEmitter(VerloopSdk);
     this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
        console.log("veloop_button_clicked",event);
@@ -24,18 +24,42 @@ export default class VerloopLiveChat extends Component {
     });
 
     //optional
-    //VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
+    VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
     //optional
-    //       VerloopSdk.setRecipeId(recipeId);
-    //        //optional
-    //        VerloopSdk.setUserEmail(email);
-    //        //optional
-    //        VerloopSdk.setUserPhone(phoneNumber);
-    //        //optional
-    //        VerloopSdk.setUserName(name);
+    VerloopSdk.setRecipeId("");
+    //optional
+    VerloopSdk.setUserEmail("");
+    //optional
+    VerloopSdk.setUserPhone("");
+    //optional
+    VerloopSdk.setUserName("");
 
     VerloopSdk.showChat();
+
+    //IOS Public Method
     
+    VerloopSdk.clearChat();
+    
+    VerloopSdk.logOut();
+
+    //Open Widget
+    if (!clientId?.trim()){
+      VerloopSdk.openWidget()
+    }else{
+      Toast.show("Please enter Client ID and try again",5.0)
+    }
+    
+    //Close Widget 
+    if (!clientId?.trim()){
+      VerloopSdk.closeWidget()
+    }else{
+      Toast.show("Please enter Client ID and try again",5.0)
+    }
+
+    //Enable Notification
+
+    
+
   }
 
   render() {

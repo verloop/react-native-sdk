@@ -111,8 +111,9 @@ public class RNVerloopSdk : RCTEventEmitter {
     func showChat() {
         if config != nil {
             DispatchQueue.main.async {
+                self.config.setUrlRedirectionFlag(canRedirect :false)
                 self.verloop = VerloopSDK(config: self.config!)
-                debugPrint("verloop config -> \(self.config!)")
+                self.verloop.observeLiveChatEventsOn(vlEventDelegate : self)
                 let cntrl = self.verloop!.getNavController()
                 self.topViewController()?.present(cntrl, animated: false)
             }
@@ -128,6 +129,42 @@ public class RNVerloopSdk : RCTEventEmitter {
         }
     }
     
+    @objc
+    func logOut() {
+        if self.config != nil {
+            DispatchQueue.main.async {
+                self.verloop?.logOut()
+            }
+        }
+    }
+
+    @objc
+    func openWidget() {
+        showChat() 
+    }
+
+    @objc
+    func closeWidget() {
+        if self.config != nil {
+            config.setButtonOnClickListener { title, type, payload in
+                DispatchQueue.main.async {
+                    self.verloop?.closeWidget()
+                }
+            }
+        }
+    }
+
+    @objc
+    func enableiOSNotification(notificatioDeviceToken:String) {
+        if self.config != nil {
+            config.setNotificationToken(notificationToken: token)
+            showChat()
+        }
+    }
+    
+    @objc
+    func
+
     func topViewController() -> UIViewController? {
         
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -140,6 +177,14 @@ public class RNVerloopSdk : RCTEventEmitter {
             return nil
         }
     }
+
+    func showErrorMessage(_ message: String) {
+    let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
+    alertController.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
+        
+    }))
+    self.topViewController()??.present(alertController, animated: true, completion: nil)
+}
     
     @objc public override static func requiresMainQueueSetup() -> Bool {
         return true
