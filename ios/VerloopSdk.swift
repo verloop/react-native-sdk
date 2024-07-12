@@ -35,16 +35,16 @@ public class RNVerloopSdk : RCTEventEmitter {
     
     @objc(createUserConfig:userId:)
     func createUserConfig(_ clientId: String, userId: String) -> Void {
-        config = VLConfig.init(clientId:clientId)
-        config?.setUserId(userId:userId)
+        self.config = VLConfig.init(clientId:clientId)
+        self.config?.setUserId(userId:userId)
     }
     
     @objc(createAnonymousUserConfig:)
     func createAnonymousUserConfig(clientId:String) -> Void {
        // print("clientId -> \(clientId)")
         debugPrint("clientId -> \(clientId)")
-        config = VLConfig.init(clientId:clientId)
-        config?.setButtonOnClickListener { title, type, payload in
+        self.config = VLConfig.init(clientId:clientId)
+        self.config?.setButtonOnClickListener { title, type, payload in
             let values : [String] = [title ?? "", type ?? "", payload ?? ""]
             DispatchQueue.main.async {
                 if self.hasObservers ?? false {
@@ -53,8 +53,8 @@ public class RNVerloopSdk : RCTEventEmitter {
             }
         }
         
-        config?.setUrlRedirectionFlag(canRedirect: false)
-        config?.setUrlClickListener {[weak self] url in
+        self.config?.setUrlRedirectionFlag(canRedirect: false)
+        self.config?.setUrlClickListener {[weak self] url in
             let values : [String] = [url ?? ""]
             print("URL click listener called")
             DispatchQueue.main.async {
@@ -68,42 +68,42 @@ public class RNVerloopSdk : RCTEventEmitter {
 
     @objc(putCustomFieldWithScope:value:scope:)
     func putCustomFieldWithScope(key:String , value:String ,scope:String) -> Void {
-        if config != nil {
+        if self.config != nil {
             if scope == "ROOM" {
-                config?.putCustomField(key: key, value: value, scope: .ROOM)
+                self.config?.putCustomField(key: key, value: value, scope: .ROOM)
             }else if scope == "USER" {
-                config?.putCustomField(key: key, value: value, scope: .USER)
+                self.config?.putCustomField(key: key, value: value, scope: .USER)
             }else{
-                config?.putCustomField(key: key, value: value, scope: .USER)
+                self.config?.putCustomField(key: key, value: value, scope: .USER)
             }
         }
     }
     
     @objc(setRecipeId:)
     func setRecipeId(recipeId:String) -> Void {
-        if config != nil {
-            config?.setRecipeId(recipeId: recipeId)
+        if self.config != nil {
+           self.config?.setRecipeId(recipeId: recipeId)
         }
     }
     
     @objc(setUserEmail:)
     func setUserEmail(userEmail:String) -> Void {
-        if config != nil {
-            config?.setUserEmail(userEmail: userEmail)
+        if self.config != nil {
+            self.config?.setUserEmail(userEmail: userEmail)
         }
     }
     
     @objc(setUserPhone:)
     func setUserPhone(userPhone:String) -> Void {
-        if config != nil {
-            config?.setUserPhone(userPhone: userPhone)
+        if self.config != nil {
+            self.config?.setUserPhone(userPhone: userPhone)
         }
     }
     
     @objc(setUserName:)
     func setUserName(userName:String) -> Void {
         if config != nil {
-            config?.setUserName(userName: userName)
+            self.config?.setUserName(userName: userName)
         }
     }
     
@@ -122,7 +122,7 @@ public class RNVerloopSdk : RCTEventEmitter {
 
     @objc
     func clearChat() {
-        if config != nil {
+        if self.config != nil {
             DispatchQueue.main.async {
                 self.verloop?.clearConfig()
             }
@@ -146,7 +146,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc
     func closeWidget() {
         if self.config != nil {
-            config.setButtonOnClickListener { title, type, payload in
+            self.config.setButtonOnClickListener { title, type, payload in
                 DispatchQueue.main.async {
                     self.verloop?.closeWidget()
                 }
@@ -158,7 +158,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc(enableiOSNotification:)
     func enableiOSNotification(notificatioDeviceToken:String) {
         if self.config != nil {
-            config.setNotificationToken(notificationToken: token)
+            self.config.setNotificationToken(notificationToken: token)
             showChat()
         }
     }
@@ -166,7 +166,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc(setUserId:)
     func setUserId(userId:String) {
         if self.config != nil {
-            config.setUserId(userId: userId)
+            self.config.setUserId(userId: userId)
             showChat()
         }
     }
