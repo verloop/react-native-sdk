@@ -158,7 +158,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc(enableiOSNotification:)
     func enableiOSNotification(notificatioDeviceToken:String) {
         if self.config != nil {
-            self.config.setNotificationToken(notificationToken: token)
+            self.config.setNotificationToken(notificationToken: notificatioDeviceToken)
             showChat()
         }
     }
