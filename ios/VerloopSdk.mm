@@ -21,5 +21,5 @@ RCT_EXTERN_METHOD(closeWidget)
 RCT_EXTERN_METHOD(enableiOSNotification:(NSString *)notificatioDeviceToken)
 RCT_EXTERN_METHOD(login)
 RCT_EXTERN_METHOD(logingWithUserId:(NSString *)userId)
-RCT_EXTERN_METHOD(setUrlRedirectionFlag:(BOOL *)canRedirect)
+RCT_EXTERN_METHOD(setUrlRedirectionFlag:(NSString *)canRedirect)
 @end
