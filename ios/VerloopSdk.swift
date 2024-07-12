@@ -16,7 +16,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     
     var hasObservers:Bool?
     override public func supportedEvents() -> [String]! {
-        return ["veloop_button_clicked","veloop_url_clicked"]
+        return ["veloop_url_clicked"]
     }
     
     public override init() {
@@ -41,31 +41,36 @@ public class RNVerloopSdk : RCTEventEmitter {
     
     @objc(createAnonymousUserConfig:)
     func createAnonymousUserConfig(clientId:String) -> Void {
-       // print("clientId -> \(clientId)")
-        debugPrint("clientId -> \(clientId)")
         self.config = VLConfig.init(clientId:clientId)
-        self.config?.setButtonOnClickListener { title, type, payload in
-            let values : [String] = [title ?? "", type ?? "", payload ?? ""]
-            DispatchQueue.main.async {
-                if self.hasObservers ?? false {
-                    self.sendEvent(withName: "veloop_button_clicked", body: values)
-                }
-            }
-        }
-        
-        self.config?.setUrlRedirectionFlag(canRedirect: false)
-        self.config?.setUrlClickListener {[weak self] url in
-            let values : [String] = [url ?? ""]
-            print("URL click listener called")
-            DispatchQueue.main.async {
-                if self?.hasObservers ?? false {
-                    self?.sendEvent(withName: "veloop_url_clicked", body: values)
-                }
-            }
-        }
     }
     
+    @objc(setButtonClickListener:)
+    func setButtonClickListener(_ callback: @escaping RCTResponseSenderBlock) -> Void   {
+        if self.config != nil {
+        self.config?.setButtonOnClickListener {[weak self] title, type, payload in
+            let values : [String] = [title ?? "", type ?? "", payload ?? ""]
+            callback([NSNull() ,values])
+        }
+        }else{
+            debugPrint("error -> config not initialised before setButtonClickListener method is called")
+        }
+    }
 
+    @objc(setUrlClickListener:)
+    func setUrlClickListener(_ callback: @escaping RCTResponseSenderBlock) -> Void   {
+        if self.config != nil {
+        self.config?.setUrlClickListener {[weak self] url in
+            let values : [String] = [url ?? ""]
+             callback([NSNull() ,values])
+        }
+        }else {
+            else{
+            debugPrint("error -> config not initialised before setUrlClickListener method is called")
+        }
+        }
+    }
+
+    
     @objc(putCustomFieldWithScope:value:scope:)
     func putCustomFieldWithScope(key:String , value:String ,scope:String) -> Void {
         if self.config != nil {
@@ -76,6 +81,8 @@ public class RNVerloopSdk : RCTEventEmitter {
             }else{
                 self.config?.putCustomField(key: key, value: value, scope: .USER)
             }
+        }else{
+            debugPrint("error -> config not initialised before putCustomFieldWithScope method is called")
         }
     }
     
@@ -83,6 +90,8 @@ public class RNVerloopSdk : RCTEventEmitter {
     func setRecipeId(recipeId:String) -> Void {
         if self.config != nil {
            self.config?.setRecipeId(recipeId: recipeId)
+        }else{
+            debugPrint("error -> config not initialised before setRecipeId method is called")
         }
     }
     
@@ -90,6 +99,8 @@ public class RNVerloopSdk : RCTEventEmitter {
     func setUserEmail(userEmail:String) -> Void {
         if self.config != nil {
             self.config?.setUserEmail(userEmail: userEmail)
+        }else{
+            debugPrint("error -> config not initialised before setUserEmail method is called")
         }
     }
     
@@ -97,6 +108,8 @@ public class RNVerloopSdk : RCTEventEmitter {
     func setUserPhone(userPhone:String) -> Void {
         if self.config != nil {
             self.config?.setUserPhone(userPhone: userPhone)
+        }else{
+            debugPrint("error -> config not initialised before setUserPhone method is called")
         }
     }
     
@@ -104,6 +117,8 @@ public class RNVerloopSdk : RCTEventEmitter {
     func setUserName(userName:String) -> Void {
         if config != nil {
             self.config?.setUserName(userName: userName)
+        }else{
+            debugPrint("error -> config not initialised before setUserName method is called")
         }
     }
     
@@ -111,12 +126,14 @@ public class RNVerloopSdk : RCTEventEmitter {
     func showChat() {
         if config != nil {
             DispatchQueue.main.async {
-                self.config.setUrlRedirectionFlag(canRedirect :false)
+                self.config?.setUrlRedirectionFlag(canRedirect :false)
                 self.verloop = VerloopSDK(config: self.config!)
-                self.verloop.observeLiveChatEventsOn(vlEventDelegate : self)
+               // self.verloop?.observeLiveChatEventsOn(vlEventDelegate : self)
                 let cntrl = self.verloop!.getNavController()
                 self.topViewController()?.present(cntrl, animated: false)
             }
+        }else{
+            debugPrint("error -> config not initialised before showChat method is called")
         }
     }
 
@@ -126,6 +143,8 @@ public class RNVerloopSdk : RCTEventEmitter {
             DispatchQueue.main.async {
                 self.verloop?.clearConfig()
             }
+        }else{
+            debugPrint("error -> config not initialised before clearChat method is called")
         }
     }
     
@@ -133,8 +152,10 @@ public class RNVerloopSdk : RCTEventEmitter {
     func logOut() {
         if self.config != nil {
             DispatchQueue.main.async {
-                self.verloop?.logOut()
+                self.verloop?.logout()
             }
+        }else{
+            debugPrint("error -> config not initialised before logOut method is called")
         }
     }
 
@@ -146,31 +167,58 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc
     func closeWidget() {
         if self.config != nil {
-            self.config.setButtonOnClickListener { title, type, payload in
+            self.config?.setButtonOnClickListener { title, type, payload in
                 DispatchQueue.main.async {
                     self.verloop?.closeWidget()
                 }
             }
+        }else{
+            debugPrint("error -> config not initialised before closeWidget method is called")
         }
     }
 
-    @objc
     @objc(enableiOSNotification:)
     func enableiOSNotification(notificatioDeviceToken:String) {
         if self.config != nil {
-            self.config.setNotificationToken(notificationToken: notificatioDeviceToken)
-            showChat()
+            self.config?.setNotificationToken(notificationToken: notificatioDeviceToken)
+        }else{
+            debugPrint("error -> config not initialised before enableiOSNotification method is called")
         }
     }
     
-    @objc(setUserId:)
-    func setUserId(userId:String) {
+    @objc
+    func login() {
         if self.config != nil {
-            self.config.setUserId(userId: userId)
-            showChat()
+            DispatchQueue.main.async {
+                    self.verloop?.closeWidget()
+            }
+        }else{
+            debugPrint("error -> config not initialised before login method is called")
         }
     }
 
+    @objc(logingWithUserId:)
+    func logingWithUserId(userId:String) {
+        if self.config != nil {
+            DispatchQueue.main.async {
+                    self.verloop?.login(userId:userId)
+            }
+        }else{
+            debugPrint("error -> config not initialised before logingWithUserId method is called")
+        }
+    }
+
+    @objc(setUrlRedirectionFlag:)
+    func setUrlRedirectionFlag(canRedirect:Bool){
+         if self.config != nil {
+            DispatchQueue.main.async {
+                    self.verloop?.login(userId:userId)
+            }
+        }else{
+            debugPrint("error -> config not initialised before setUrlRedirectionFlag method is called")
+        }   
+    }
+    
     func topViewController() -> UIViewController? {
         
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -189,7 +237,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     alertController.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
         
     }))
-    self.topViewController()??.present(alertController, animated: true, completion: nil)
+        self.topViewController()?.present(alertController, animated: true, completion: nil)
 }
     
     @objc public override static func requiresMainQueueSetup() -> Bool {

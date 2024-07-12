@@ -1,75 +1,60 @@
 import { Component } from 'react';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
-import Toast from 'react-native-simple-toast'
+import Toast from 'react-native-simple-toast';
 
 export default class VerloopLiveChat extends Component {
   async componentDidMount() {
     const clientId = 'reactnative'; // it is same as https://<YOUR COMPANY ID>.verloop.io
-    //const userId = "raghav"; // it is the unique userID to identify all the chats for this user
+    const userId = 'TestReactNative'; // it is the unique userID to identify all the chats for this user
 
-    // VerloopSdk.createAnonymousUserConfig(clientId);
+    VerloopSdk.createUserConfig(clientId, userId);
     //or
-    VerloopSdk.createAnonymousUserConfig(clientId);
-    console.log('createAnonymousUserConfig');
-     const eventEmitter = new NativeEventEmitter(VerloopSdk);
-    this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
-       console.log("veloop_button_clicked",event);
-       console.log("");
-       console.log("");
+    //VerloopSdk.createAnonymousUserConfig(clientId);
+  
+    VerloopSdk.setButtonClickListener((error, response) => {
+      console.log('Error', error, 'Response', response);
     });
 
-    this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
-        console.log("veloop_url_clicked",event);
+    VerloopSdk.setUrlClickListener((error, response) => {
+      console.log('Error', error, 'Response', response);
     });
-
+    
     //optional
-    VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
+    VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
     //optional
-    VerloopSdk.setRecipeId("");
+    //VerloopSdk.setRecipeId("91a4a9a3-646b-4c30-84b8-0df01f5f8343");
     //optional
-    VerloopSdk.setUserEmail("");
+    VerloopSdk.setUserEmail('patelpankaj.1010@gmail.com');
     //optional
-    VerloopSdk.setUserPhone("");
+    VerloopSdk.setUserPhone('+918128308604');
     //optional
-    VerloopSdk.setUserName("");
+    VerloopSdk.setUserName('TestReactNative');
 
     VerloopSdk.showChat();
 
     //IOS Public Method
-    
-    VerloopSdk.clearChat();
-    
-    VerloopSdk.logOut();
+
+    //VerloopSdk.clearChat();
+
+    //VerloopSdk.logOut();
 
     //Open Widget
-    if (!clientId?.trim()){
-      VerloopSdk.openWidget()
-    }else{
-      Toast.show("Please enter Client ID and try again",5.0)
-    }
+    //VerloopSdk.openWidget()
+
+    //Close Widget
+    //VerloopSdk.closeWidget()
     
-    //Close Widget 
-    if (!clientId?.trim()){
-      VerloopSdk.closeWidget()
-    }else{
-      Toast.show("Please enter Client ID and try again",5.0)
-    }
 
     //Enable Notification
-    if (!clientId?.trim()){
-      VerloopSdk.enableiOSNotification(clientId)
-    }else{
-      Toast.show("Please enter Client ID and try again",5.0)
-    }
-    
-     //LoginWithUserID
-     if (!clientId?.trim()){
-      VerloopSdk.setUserId(clientId)
-    }else{
-      Toast.show("Please enter Client ID and try again",5.0)
-    }
+    //VerloopSdk.enableiOSNotification(deviceToken)
 
+    //Login
+    //VerloopSdk.login()
+    
+    //LoginWithUserID
+    //VerloopSdk.logingWithUserId(userId)
+    
   }
 
   render() {
