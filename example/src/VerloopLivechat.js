@@ -57,8 +57,18 @@ export default class VerloopLiveChat extends Component {
     }
 
     //Enable Notification
-
+    if (!clientId?.trim()){
+      VerloopSdk.enableiOSNotification(clientId)
+    }else{
+      Toast.show("Please enter Client ID and try again",5.0)
+    }
     
+     //LoginWithUserID
+     if (!clientId?.trim()){
+      VerloopSdk.setUserId(clientId)
+    }else{
+      Toast.show("Please enter Client ID and try again",5.0)
+    }
 
   }
 

@@ -155,6 +155,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     }
 
     @objc
+    @objc(enableiOSNotification:)
     func enableiOSNotification(notificatioDeviceToken:String) {
         if self.config != nil {
             config.setNotificationToken(notificationToken: token)
@@ -162,8 +163,13 @@ public class RNVerloopSdk : RCTEventEmitter {
         }
     }
     
-    @objc
-    func
+    @objc(setUserId:)
+    func setUserId(userId:String) {
+        if self.config != nil {
+            config.setUserId(userId: userId)
+            showChat()
+        }
+    }
 
     func topViewController() -> UIViewController? {
         
