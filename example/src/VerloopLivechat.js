@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
 import Toast from 'react-native-simple-toast';
+import PushNotification from "react-native-push-notification";
 
 export default class VerloopLiveChat extends Component {
   async componentDidMount() {
@@ -23,37 +24,17 @@ export default class VerloopLiveChat extends Component {
     //optional
     VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
     //optional
-    //VerloopSdk.setRecipeId("91a4a9a3-646b-4c30-84b8-0df01f5f8343");
+    //VerloopSdk.setRecipeId("<recipeId>");
     //optional
-    VerloopSdk.setUserEmail('patelpankaj.1010@gmail.com');
+    VerloopSdk.setUserEmail('<userEmail>');
     //optional
-    VerloopSdk.setUserPhone('+918128308604');
+    VerloopSdk.setUserPhone('<userPhone>');
     //optional
-    VerloopSdk.setUserName('TestReactNative');
+    VerloopSdk.setUserName('<userPhone>');
+
+    VerloopSdk.enableiOSNotification('<device token>')
 
     VerloopSdk.showChat();
-
-    //IOS Public Method
-
-    //VerloopSdk.clearChat();
-
-    //VerloopSdk.logOut();
-
-    //Open Widget
-    //VerloopSdk.openWidget()
-
-    //Close Widget
-    //VerloopSdk.closeWidget()
-    
-
-    //Enable Notification
-    //VerloopSdk.enableiOSNotification(deviceToken)
-
-    //Login
-    //VerloopSdk.login()
-    
-    //LoginWithUserID
-    //VerloopSdk.logingWithUserId(userId)
     
   }
 

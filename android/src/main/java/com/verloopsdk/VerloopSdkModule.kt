@@ -20,7 +20,7 @@ import io.verloop.sdk.VerloopConfig
 
 class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
-    private var verloopConfig: VerloopConfig.Builder? = null
+    private var verloopConfigBuilder: VerloopConfig.Builder? = null
     private var verloop: Verloop? = null
     private var configModified: Boolean = false
 
@@ -51,6 +51,7 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
         })
         configModified = true
     }
+    
 
     private fun setUrlClickListener(verloopConfig: VerloopConfig) {
         verloopConfig.setUrlClickListener(object : LiveChatUrlClickListener {
