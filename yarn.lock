@@ -6032,13 +6032,14 @@ react-native-simple-toast@^3.3.1:
   dependencies:
     react "18.2.0"
     react-native "0.74.3"
+    react-native-push-notification "^8.1.1"
     react-native-simple-toast "^3.3.1"
-    react-native-verloop-sdk "file:../react-native-verloop-sdk-0.1.0.tgz"
+    react-native-verloop-sdk "^1.1.0-rc.1"
 
-"react-native-verloop-sdk@file:../react-native-verloop-sdk-0.1.0.tgz":
-  version "0.1.0"
-  resolved "file:react-native-verloop-sdk-0.1.0.tgz"
-  integrity sha512-UdKjz8aG9ocr/cqB7Z2yr1mp9uYJdsxaXSaGLpDNgOX7/HpqQ0CFGLTKgWvacZ80vmYz9AkuJR3hrwgq3yU58w==
+"react-native-verloop-sdk@file:../react-native-verloop-sdk-1.1.0-rc.1.tgz":
+  version "1.1.0-rc.1"
+  resolved "file:react-native-verloop-sdk-1.1.0-rc.1.tgz"
+  integrity sha512-STWXW42Bnr9CwcYzVNe8jWY4qqg/vOu3DFJJMaYi91DtCxpUp/NlOXgOhTjfvvM7taGhqmb4JEiGqbsFGLeczA==
 
 react-native@*, react-native@>=0.33, react-native@>=0.58.4, react-native@>=0.71.0, react-native@0.74.3:
   version "0.74.3"

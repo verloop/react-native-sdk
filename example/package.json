@@ -14,7 +14,7 @@
     "react-native": "0.74.3",
     "react-native-push-notification": "^8.1.1",
     "react-native-simple-toast": "^3.3.1",
-    "react-native-verloop-sdk": "^1.1.0-rc.1"
+    "react-native-verloop-sdk": "file:../react-native-verloop-sdk-1.1.0-rc.1.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

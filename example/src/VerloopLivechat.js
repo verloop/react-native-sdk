@@ -1,8 +1,6 @@
 import { Component } from 'react';
-import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
-import Toast from 'react-native-simple-toast';
-import PushNotification from "react-native-push-notification";
+
 
 export default class VerloopLiveChat extends Component {
   async componentDidMount() {
@@ -14,7 +12,7 @@ export default class VerloopLiveChat extends Component {
     //VerloopSdk.createAnonymousUserConfig(clientId);
   
     VerloopSdk.setButtonClickListener((error, response) => {
-      console.log('Error', error, 'Response', response);
+      console.log('Error', error, 'Button Response', response);
     });
 
     VerloopSdk.setUrlClickListener((error, response) => {
@@ -34,6 +32,8 @@ export default class VerloopLiveChat extends Component {
 
     VerloopSdk.enableiOSNotification('<device token>')
 
+    VerloopSdk.setUrlRedirectionFlag("true")
+
     VerloopSdk.showChat();
     
   }
@@ -42,6 +42,6 @@ export default class VerloopLiveChat extends Component {
     return null;
   }
   componentWillUnmount() {
-    this.eventListener.remove(); //Removes the listener
+     //Removes the listener
   }
 }
