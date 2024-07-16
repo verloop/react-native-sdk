@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import VerloopSdk from 'react-native-verloop-sdk';
 
-
 export default class VerloopLiveChat extends Component {
   async componentDidMount() {
     const clientId = 'reactnative'; // it is same as https://<YOUR COMPANY ID>.verloop.io
@@ -10,17 +9,18 @@ export default class VerloopLiveChat extends Component {
     VerloopSdk.createUserConfig(clientId, userId);
     //or
     //VerloopSdk.createAnonymousUserConfig(clientId);
-  
-    VerloopSdk.setButtonClickListener((error, response) => {
-      console.log('Error', error, 'Button Response', response);
+
+    VerloopSdk.setButtonClickListener((response) => {
+      console.log('ButtonClickListener Response', response);
     });
 
-    VerloopSdk.setUrlClickListener((error, response) => {
-      console.log('Error', error, 'Response', response);
+    VerloopSdk.setUrlClickListener((response) => {
+      console.log('UrlClickListener Response', response);
     });
-    
+
     //optional
-    VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
+    //VerloopSdk.putCustomField('test', 'value');
+    //VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
     //optional
     //VerloopSdk.setRecipeId("<recipeId>");
     //optional
@@ -30,18 +30,19 @@ export default class VerloopLiveChat extends Component {
     //optional
     VerloopSdk.setUserName('<userPhone>');
 
-    VerloopSdk.enableiOSNotification('<device token>')
+    //Only for iOS
+    //VerloopSdk.enableiOSNotification('<device token>')
+    //VerloopSdk.setUrlRedirectionFlag("false")
 
-    VerloopSdk.setUrlRedirectionFlag("true")
-
+    //Only for Android
+    //VerloopSdk.setFcmToken("<FcmToken>")
     VerloopSdk.showChat();
-    
   }
 
   render() {
     return null;
   }
   componentWillUnmount() {
-     //Removes the listener
+    //Removes the listener
   }
 }

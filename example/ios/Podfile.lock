@@ -938,7 +938,7 @@ PODS:
   - react-native-simple-toast (3.3.1):
     - React-Core
     - Toast (~> 4)
-  - react-native-verloop-sdk (1.1.0-rc.1):
+  - react-native-verloop-sdk (1.1.0-rc.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1407,7 +1407,7 @@ SPEC CHECKSUMS:
   React-logger: fa92ba4d3a5d39ac450f59be2a3cec7b099f0304
   React-Mapbuffer: 9f68550e7c6839d01411ac8896aea5c868eff63a
   react-native-simple-toast: 1f1cc551d419bc0ab05dcb0136554006c274789d
-  react-native-verloop-sdk: be5322617f32a42b494a405761b1689b9b709286
+  react-native-verloop-sdk: 4ab025c40f557c33e250f562f903a585de5d33ed
   React-nativeconfig: fa5de9d8f4dbd5917358f8ad3ad1e08762f01dcb
   React-NativeModulesApple: 585d1b78e0597de364d259cb56007052d0bda5e5
   React-perflogger: 7bb9ba49435ff66b666e7966ee10082508a203e8

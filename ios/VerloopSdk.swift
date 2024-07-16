@@ -49,7 +49,7 @@ public class RNVerloopSdk : RCTEventEmitter {
         if self.config != nil {
             self.config?.setButtonOnClickListener { title, type, payload in
                 let values : [String] = [title ?? "", type ?? "", payload ?? ""]
-                callback([NSNull() ,values])
+                callback([values])
             }
         }else{
             debugPrint("error -> config not initialised before setButtonClickListener method is called")
@@ -61,14 +61,22 @@ public class RNVerloopSdk : RCTEventEmitter {
         if self.config != nil {
             self.config?.setUrlClickListener { url in
                 let values : [String] = [url ?? ""]
-                callback([NSNull() ,values])
+                callback([values])
             }
         }else {
             debugPrint("error -> config not initialised before setUrlClickListener method is called")
         }
     }
     
-    
+    @objc(putCustomField:value:)
+    func putCustomField(key:String , value:String) -> Void {
+        if self.config != nil {
+            self.config?.putCustomField(key: key, value: value, scope: .USER)
+        }else{
+            debugPrint("error -> config not initialised before putCustomFieldWithScope method is called")
+        }
+    }
+
     @objc(putCustomFieldWithScope:value:scope:)
     func putCustomFieldWithScope(key:String , value:String ,scope:String) -> Void {
         if self.config != nil {

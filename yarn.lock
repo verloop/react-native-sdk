@@ -6016,11 +6016,6 @@ react-native-builder-bob@^0.25.0:
     which "^2.0.2"
     yargs "^17.5.1"
 
-react-native-push-notification@^8.1.1:
-  version "8.1.1"
-  resolved "https://registry.npmjs.org/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz"
-  integrity sha512-XpBtG/w+a6WXTxu6l1dNYyTiHnbgnvjoc3KxPTxYkaIABRmvuJZkFxqruyGvfCw7ELAlZEAJO+dthdTabCe1XA==
-
 react-native-simple-toast@^3.3.1:
   version "3.3.1"
   resolved "https://registry.npmjs.org/react-native-simple-toast/-/react-native-simple-toast-3.3.1.tgz"
@@ -6034,7 +6029,7 @@ react-native-simple-toast@^3.3.1:
     react-native "0.74.3"
     react-native-push-notification "^8.1.1"
     react-native-simple-toast "^3.3.1"
-    react-native-verloop-sdk "^1.1.0-rc.1"
+    react-native-verloop-sdk "file:../react-native-verloop-sdk-1.1.0-rc.1.tgz"
 
 "react-native-verloop-sdk@file:../react-native-verloop-sdk-1.1.0-rc.1.tgz":
   version "1.1.0-rc.1"

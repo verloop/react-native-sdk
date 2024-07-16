@@ -8,6 +8,7 @@ RCT_EXTERN_METHOD(createUserConfig:(NSString *)clientId userId:(NSString *)userI
 RCT_EXTERN_METHOD(createAnonymousUserConfig:(NSString *)clientId)
 RCT_EXTERN_METHOD(setButtonClickListener:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(setUrlClickListener:(RCTResponseSenderBlock)callback)
+RCT_EXTERN_METHOD(putCustomFieldWithScope:(NSString *)key value:(NSString *)value)
 RCT_EXTERN_METHOD(putCustomFieldWithScope:(NSString *)key value:(NSString *)value scope:(NSString *)scope)
 RCT_EXTERN_METHOD(setRecipeId:(NSString *)recipeId)
 RCT_EXTERN_METHOD(setUserEmail:(NSString *)userEmail)
