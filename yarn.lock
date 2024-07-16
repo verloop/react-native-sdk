@@ -1594,13 +1594,6 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
-"@react-native-community/push-notification-ios@^1.10.1":
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/@react-native-community/push-notification-ios/-/push-notification-ios-1.11.0.tgz"
-  integrity sha512-nfkUs8P2FeydOCR4r7BNmtGxAxI22YuGP6RmqWt6c8EEMUpqvIhNKWkRSFF3pHjkgJk2tpRb9wQhbezsqTyBvA==
-  dependencies:
-    invariant "^2.2.4"
-
 "@react-native/assets-registry@0.74.85":
   version "0.74.85"
 
@@ -6027,16 +6020,10 @@ react-native-simple-toast@^3.3.1:
   dependencies:
     react "18.2.0"
     react-native "0.74.3"
-    react-native-push-notification "^8.1.1"
     react-native-simple-toast "^3.3.1"
     react-native-verloop-sdk "file:../react-native-verloop-sdk-1.1.0-rc.1.tgz"
 
-"react-native-verloop-sdk@file:../react-native-verloop-sdk-1.1.0-rc.1.tgz":
-  version "1.1.0-rc.1"
-  resolved "file:react-native-verloop-sdk-1.1.0-rc.1.tgz"
-  integrity sha512-STWXW42Bnr9CwcYzVNe8jWY4qqg/vOu3DFJJMaYi91DtCxpUp/NlOXgOhTjfvvM7taGhqmb4JEiGqbsFGLeczA==
-
-react-native@*, react-native@>=0.33, react-native@>=0.58.4, react-native@>=0.71.0, react-native@0.74.3:
+react-native@*, react-native@>=0.71.0, react-native@0.74.3:
   version "0.74.3"
   dependencies:
     "@jest/create-cache-key-function" "^29.6.3"
@@ -6086,7 +6073,7 @@ react-shallow-renderer@^16.15.0:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
 
-react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", react@>=16.6.3, react@18.2.0:
+react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", react@18.2.0:
   version "18.2.0"
   dependencies:
     loose-envify "^1.1.0"

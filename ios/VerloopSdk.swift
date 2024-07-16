@@ -16,7 +16,7 @@ public class RNVerloopSdk : RCTEventEmitter {
     
     var hasObservers:Bool?
     override public func supportedEvents() -> [String]! {
-        return ["veloop_url_clicked"]
+        return ["veloop_url_clicked","veloop_button_clicked"]
     }
     
     public override init() {
@@ -44,24 +44,36 @@ public class RNVerloopSdk : RCTEventEmitter {
         self.config = VLConfig.init(clientId:clientId)
     }
     
-    @objc(setButtonClickListener:)
-    func setButtonClickListener(_ callback: @escaping RCTResponseSenderBlock) -> Void   {
+    @objc(setButtonClickListener)
+    func setButtonClickListener() -> Void   {
         if self.config != nil {
             self.config?.setButtonOnClickListener { title, type, payload in
-                let values : [String] = [title ?? "", type ?? "", payload ?? ""]
-                callback([values])
+                var values = [String:Any]()
+                values["title"] = title ?? ""
+                values["type"] = type ?? ""
+                values["payload"] = payload ?? ""
+                DispatchQueue.main.async {
+                    if self.hasObservers ?? false {
+                        self.sendEvent(withName: "veloop_button_clicked", body: values)
+                    }
+                }
             }
         }else{
             debugPrint("error -> config not initialised before setButtonClickListener method is called")
         }
     }
     
-    @objc(setUrlClickListener:)
-    func setUrlClickListener(_ callback: @escaping RCTResponseSenderBlock) -> Void   {
+    @objc(setUrlClickListener)
+    func setUrlClickListener() -> Void   {
         if self.config != nil {
             self.config?.setUrlClickListener { url in
-                let values : [String] = [url ?? ""]
-                callback([values])
+                var values = [String:Any]()
+                values["url"] = url ?? ""
+                DispatchQueue.main.async {
+                    if self.hasObservers ?? false {
+                        self.sendEvent(withName: "veloop_url_clicked", body: values)
+                    }
+                }
             }
         }else {
             debugPrint("error -> config not initialised before setUrlClickListener method is called")
@@ -71,12 +83,12 @@ public class RNVerloopSdk : RCTEventEmitter {
     @objc(putCustomField:value:)
     func putCustomField(key:String , value:String) -> Void {
         if self.config != nil {
-            self.config?.putCustomField(key: key, value: value, scope: .USER)
+            self.config?.putCustomField(key: key, value: value, scope: .ROOM)
         }else{
             debugPrint("error -> config not initialised before putCustomFieldWithScope method is called")
         }
     }
-
+    
     @objc(putCustomFieldWithScope:value:scope:)
     func putCustomFieldWithScope(key:String , value:String ,scope:String) -> Void {
         if self.config != nil {

@@ -65,13 +65,21 @@ export default class VerloopLiveChat extends Component {
     //or
     //VerloopSdk.createAnonymousUserConfig(clientId);
   
-    VerloopSdk.setButtonClickListener((error, response) => {
-      console.log('Error', error, 'Response', response);
-    });
-
-    VerloopSdk.setUrlClickListener((error, response) => {
-      console.log('Error', error, 'Response', response);
-    });
+    const eventEmitter = new NativeEventEmitter(VerloopSdk);
+    VerloopSdk.setButtonClickListener()
+    VerloopSdk.setUrlClickListener()
+    this.eventListener = eventEmitter.addListener(
+      'veloop_button_clicked',
+      (event) => {
+        console.log('veloop_button_clicked',event);
+      }
+    );
+    this.eventListener = eventEmitter.addListener(
+      'veloop_url_clicked',
+      (event) => {
+        console.log('veloop_url_clicked',event);
+      }
+    );
     
     //optional
     VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');

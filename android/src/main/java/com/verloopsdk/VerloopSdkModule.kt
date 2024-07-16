@@ -28,8 +28,8 @@ class RNVerloopCustomVariable(
 class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
     private var verloopConfigBuilder: VerloopConfig.Builder? = null
-    private var buttonClickCallback: Callback? = null
-    private var urlClickCallback: Callback? = null
+    private var buttonClickCallListenerAdded: Boolean = false
+    private var urlClickCallListenerAdded: Boolean = false
     private var customVariableList: MutableList<RNVerloopCustomVariable> =  mutableListOf<RNVerloopCustomVariable>()
     private var verloop: Verloop? = null
     private var configModified: Boolean = false
@@ -40,6 +40,11 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
 
     override fun getName(): String {
         return "RNVerloopSdk"
+    }
+
+    private fun sendEvent(reactContext: ReactApplicationContext, eventName: String, params: WritableMap?) {
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                .emit(eventName, params)
     }
 
     @ReactMethod
@@ -57,14 +62,14 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
     }
 
     @ReactMethod
-    fun setButtonClickListener(callback: Callback) {
-        buttonClickCallback = callback
+    fun setButtonClickListener() {
+        buttonClickCallListenerAdded = true
         configModified = true
     }
 
     @ReactMethod
-    fun setUrlClickListener(callback: Callback) {
-        urlClickCallback = callback
+    fun setUrlClickListener() {
+        urlClickCallListenerAdded = true
         configModified = true
     }
 
@@ -136,26 +141,25 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
     @ReactMethod
     fun showChat() {
         val config = verloopConfigBuilder?.build()
-        if (buttonClickCallback != null) {
+        if (buttonClickCallListenerAdded) {
             config?.setButtonClickListener(object : LiveChatButtonClickListener {
                 override fun buttonClicked(title: String?, type: String?, payload: String?) {
-                    if (type == "web_url") {
                         val params = Arguments.createMap()
                         params.putString("title", title)
                         params.putString("type", type)
                         params.putString("payload", payload)
-                        buttonClickCallback!!.invoke(params)
-                    }
+                        sendEvent(reactContext, "veloop_button_clicked", params)
                 }
             })
         }
 
-        if (urlClickCallback != null) {
+
+        if (urlClickCallListenerAdded) {
             config?.setUrlClickListener(object : LiveChatUrlClickListener {
                     override fun urlClicked(url: String?) {
                         val params = Arguments.createMap()
                         params.putString("url", url)
-                        urlClickCallback!!.invoke(params)
+                        sendEvent(reactContext, "veloop_url_clicked", params)
                     }
             })
         }
@@ -186,5 +190,15 @@ class RNVerloopSdkModule(private val reactContext: ReactApplicationContext) : Re
 
     override fun onHostDestroy() {
         // do nothing
+    }
+
+    @ReactMethod
+    fun addListener(type: String?) {
+    // Keep: Required for RN built in Event Emitter Calls.
+    }
+
+    @ReactMethod
+    fun removeListeners(type: Int?) {
+    // Keep: Required for RN built in Event Emitter Calls.
     }
 }
