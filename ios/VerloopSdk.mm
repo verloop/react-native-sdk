@@ -23,4 +23,6 @@ RCT_EXTERN_METHOD(enableiOSNotification:(NSString *)notificatioDeviceToken)
 RCT_EXTERN_METHOD(login)
 RCT_EXTERN_METHOD(logingWithUserId:(NSString *)userId)
 RCT_EXTERN_METHOD(setUrlRedirectionFlag:(NSString *)canRedirect)
+RCT_EXTERN_METHOD(showDownloadButton:(NSString *)isAllowFileDownload)
+RCT_EXTERN_METHOD(openMenuWidget)
 @end

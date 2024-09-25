@@ -240,7 +240,33 @@ public class RNVerloopSdk : RCTEventEmitter {
             debugPrint("error -> config not initialised before setUrlRedirectionFlag method is called")
         }
     }
+
+    @objc
+    func openMenuWidget() {
+        if self.config != nil {
+            DispatchQueue.main.async {
+                self.config?.openMenuWidget()
+            }
+        }else{
+            debugPrint("error -> config not initialised before openMenuWidget method is called")
+        }
+    }
     
+    @objc(showDownloadButton:)
+    func showDownloadButton(isAllowFileDownload:String){
+        if self.config != nil {
+            DispatchQueue.main.async {
+                if isAllowFileDownload == "true" {
+                    self.config?.showDownloadButton(true)
+                }else{
+                    self.config?.showDownloadButton(false)
+                }
+            }
+        }else{
+            debugPrint("error -> config not initialised before setUrlRedirectionFlag method is called")
+        }
+    }
+
     func topViewController() -> UIViewController? {
         
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first

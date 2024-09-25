@@ -41,6 +41,8 @@ export default class VerloopLiveChat extends Component {
     //optional
     VerloopSdk.setUserName('<userPhone>');
 
+    VerloopSdk.openMenuWidget()
+    VerloopSdk.showDownloadButton("true")
     //Only for iOS
     //VerloopSdk.enableiOSNotification('<device token>')
     //VerloopSdk.setUrlRedirectionFlag("false")
