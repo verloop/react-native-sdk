@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNVerloopSdk"
-  s.version      = "1.0.0"
+  s.version      = "1.0.72-rc14"
   s.summary      = "RNVerloopSdk"
   s.description  = <<-DESC
                   This is a wrapper over the verloop iOS SDk.
@@ -10,15 +10,13 @@ Pod::Spec.new do |s|
   s.homepage     = "https://verloop.io"
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "raghav@verloop.io" }
-  s.platform     = :ios, "9.0"
-  s.source       = { :git => "https://github.com/verloop/react-native-sdk.git", :tag => "master" }
-  s.source_files  = "RNVerloopSdk/**/*.{h,m}"
+  s.author       = { "author" => "tarun@verloop.io" }
+  s.platform     = :ios, "11.0"
+  s.source       = { :git => "https://github.com/verloop/react-native-sdk.git", :tag => "#{s.version}" }
+  s.source_files  = "RNVerloopSdk/**/*.{h,m,swift}"
   s.requires_arc = true
-  s.vendored_frameworks = "VerloopSDK.framework"
-
-
   s.dependency "React"
+  s.dependency "VerloopSDKiOS"
   #s.dependency "others"
 
 end

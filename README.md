@@ -2,10 +2,6 @@
 
 `$ npm install react-native-verloop-sdk --save`
 
-### Mostly automatic installation
-
-`$ react-native link react-native-verloop-sdk`
-
 ### If you are using proguard in android add the following
 
 ```
@@ -16,17 +12,14 @@
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 ```
 
-### Manual installation
+### Installation
 
 
-#### iOS
+#### iOS - Cocoapods
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-verloop-sdk` and add `VerloopSdk.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libVerloopSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1. After adding the dependency `react-native-verloop-sdk` in `package.json` and running `npm install`, go to `ios` subdirectory and run `pod install`. You should find two dependencies getting installed, `RNVerloopSDK` and `VerloopSDKiOS`. You should be good to go.  
 
-#### Android
+#### Android - Manual
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.VerloopSdkPackage;` to the imports at the top of the file
@@ -41,10 +34,6 @@
       compile project(':react-native-verloop-sdk')
   	```
 
-#### Additional iOS step:
-
-* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
-* Run pod install in the same folder
 
 ## Usage
 ```javascript
@@ -56,7 +45,7 @@ export default class VerloopLiveChat extends Component {
 
 
     async componentDidMount() {
-        const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
+        const clientId = "hello"; // it is same as https://<YOUR CLIENT ID>.verloop.io
         const userId = "raghav"; // it is the unique userID to identify all the chats for this user
 
         // VerloopSdk.createAnonymousUserConfig(clientId);
