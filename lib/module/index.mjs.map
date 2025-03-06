@@ -1,0 +1,1 @@
+{"version":3,"names":["NativeModules","RNVerloopSdk","VerloopSdk"],"sourceRoot":"../../src","sources":["index.tsx"],"mappings":"AAAA,SAASA,aAAa,QAAQ,cAAc;AAE5C,MAAM;EAAEC;AAAa,CAAC,GAAGD,aAAa;AAEtC,MAAME,UAAU,GAAGD,YAAY;AAE/B,eAAeC,UAAU","ignoreList":[]}

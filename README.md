@@ -16,15 +16,24 @@
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 ```
 
-### Manual installation
+### Pods installation
 
 
 #### iOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-verloop-sdk` and add `VerloopSdk.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libVerloopSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1. Navigate to Your iOS Directory:
+   Open a terminal and navigate to the ios directory of your React Native project:
+   `cd ios`
+2. Edit Your Podfile:
+   Open the generated Podfile in your favorite text editor and add the necessary ,uncomment platform set like below :
+   `platform :ios, '13.0'`
+3. Install Pods:
+   `pod install`
+
+   Updating Pods : (if needed)
+   `cd ios`
+   `pod install --repo-update`
+
 
 #### Android
 
@@ -41,63 +50,60 @@
       compile project(':react-native-verloop-sdk')
   	```
 
-#### Additional iOS step:
-
-* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
-* Run pod install in the same folder
-
 ## Usage
 ```javascript
-import {Component} from 'react';
+import { Component } from 'react';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import VerloopSdk from 'react-native-verloop-sdk';
 
 export default class VerloopLiveChat extends Component {
+  async componentDidMount() {
+    const clientId = 'reactnative'; // it is same as https://<YOUR COMPANY ID>.verloop.io
+    const userId = 'TestReactNative'; // it is the unique userID to identify all the chats for this user
 
+    VerloopSdk.createUserConfig(clientId, userId);
+    //or
+    //VerloopSdk.createAnonymousUserConfig(clientId);
+  
+    const eventEmitter = new NativeEventEmitter(VerloopSdk);
+    VerloopSdk.setButtonClickListener()
+    VerloopSdk.setUrlClickListener()
+    this.eventListener = eventEmitter.addListener(
+      'veloop_button_clicked',
+      (event) => {
+        console.log('veloop_button_clicked',event);
+      }
+    );
+    this.eventListener = eventEmitter.addListener(
+      'veloop_url_clicked',
+      (event) => {
+        console.log('veloop_url_clicked',event);
+      }
+    );
+    
+    //optional
+    VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
+    //optional
+    //VerloopSdk.setRecipeId("<recipeId>");
+    //optional
+    VerloopSdk.setUserEmail('<userEmail>');
+    //optional
+    VerloopSdk.setUserPhone('<userPhone>');
+    //optional
+    VerloopSdk.setUserName('<userPhone>');
 
-    async componentDidMount() {
-        const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
-        const userId = "raghav"; // it is the unique userID to identify all the chats for this user
+    VerloopSdk.enableiOSNotification('<device token>')
 
-        // VerloopSdk.createAnonymousUserConfig(clientId);
-        //or
-        VerloopSdk.createUserConfig(clientId, userId);
+    VerloopSdk.showChat();
+    
+  }
 
-        const eventEmitter = new NativeEventEmitter(VerloopSdk);
-        this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
-           console.log(event.title);
-           console.log(event.type);
-           console.log(event.payload);
-        });
-        this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
-           console.log(event.url);
-        });
-
-        //optional
-        VerloopSdk.putCustomField(key, value);
-        //optional
-        VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
-        //optional
-        VerloopSdk.putCustomFieldWithScope("test2", "value2", "ROOM");
-        //optional
-        VerloopSdk.setRecipeId(recipeId);
-        //optional
-        VerloopSdk.setUserEmail(email);
-        //optional
-        VerloopSdk.setUserPhone(phoneNumber);
-        //optional
-        VerloopSdk.setUserName(name);
-
-        VerloopSdk.showChat();
-        // VerloopSdk.hideChat();
-    }
-
-    render() {
-        return null;
-    }
-    componentWillUnmount() {
-        this.eventListener.remove(); //Removes the listener
-    }
+  render() {
+    return null;
+  }
+  componentWillUnmount() {
+    this.eventListener.remove(); //Removes the listener
+  }
 }
 ```
 

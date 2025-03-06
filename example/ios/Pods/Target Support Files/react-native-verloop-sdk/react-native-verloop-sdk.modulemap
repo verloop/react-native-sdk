@@ -1,0 +1,6 @@
+module react_native_verloop_sdk {
+  umbrella header "react-native-verloop-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}
