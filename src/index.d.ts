@@ -12,8 +12,8 @@ declare module "react-native-verloop-sdk" {
     setUserName(userName: string): void;
     setUserPhone(userPhone: string): void;
     showChat(): void;
-    addListener?(eventType: string): void; // Android-specific method
-    removeListeners?(count: number): void; // Android-specific method
+    addListener(eventType: string): void; // Android-specific method
+    removeListeners(count: number): void; // Android-specific method
     clearChat?(): void; // IOS-specific method
     logOut?(): void; // IOS-specific method
     openWidget?(): void; // IOS-specific method
