@@ -8,7 +8,7 @@ import {
   Text,
   Platform,
 } from 'react-native';
-import VerloopSdk from 'awesome-verloop';
+import VerloopSdk from 'react-native-verloop-sdk';
 
 const VerloopLiveChat: React.FC = () => {
 

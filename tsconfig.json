@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "awesome-toast": ["../src/index.ts"] // Optional: Direct path to source
+      "react-native-verloop-sdk": ["../src/index.ts"] // Optional: Direct path to source
     }
   },
   "exclude": ["example"] // Exclude the example app

@@ -1,4 +1,4 @@
-declare module "awesome-verloop" {
+declare module "react-native-verloop-sdk" {
   interface VerloopInterface {
     createUserConfig(clientId: string, userId: string): void;
     createAnonymousUserConfig(clientId: string): void;
