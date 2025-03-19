@@ -1,8 +1,5 @@
 import { NativeModules, Platform } from "react-native";
 
-// Log available modules for debugging
-console.log("Platform.OS:", Platform.OS);
-console.log("NativeModules keys:", Object.keys(NativeModules));
 
 // Define the Verloop interface
 interface VerloopInterface {
@@ -10,24 +7,27 @@ interface VerloopInterface {
   createAnonymousUserConfig(clientId: string): void;
   setButtonClickListener(): void;
   setUrlClickListener(): void;
-  setFcmToken?(token: string): void; // Optional for Android
+  setFcmToken?(token: string): void; // Android-specific method
   putCustomField(key: string, value: string): void;
   putCustomFieldWithScope(key: string, value: string, scope: string): void;
   setRecipeId(recipeId: string): void;
   setUserEmail(userEmail: string): void;
   setUserName(userName: string): void;
   setUserPhone(userPhone: string): void;
-  initialize(clientId: string): void;
-  setUserId(userId: string): void;
   showChat(): void;
-  addListener?(eventType: string): void; // Optional, depending on platform support
-  removeListeners?(count: number): void; // Optional, depending on platform support
+  addListener?(eventType: string): void; // Android-specific method
+  removeListeners?(count: number): void; // Android-specific method
+  clearChat?(): void; // IOS-specific method
+  logOut?(): void; // IOS-specific method
+  openWidget?(): void; // IOS-specific method
+  closeWidget?(): void; // IOS-specific method
+  enableiOSNotification?(notificatioDeviceToken: string): void; // IOS-specific method
+  login?(): void; // IOS-specific method
+  logingWithUserId?(userId: string): void; // IOS-specific method
+  setUrlRedirectionFlag?(canRedirect: string): void; // IOS-specific method
 }
 
-// Select the appropriate module based on platform
 const VerloopModule = NativeModules.RNVerloopSdk
-
-console.log("Selected VerloopModule:", VerloopModule);
 
 // Default to an empty object if the module isn’t available
 const VerloopNative = VerloopModule || {};
@@ -113,20 +113,6 @@ const Verloop: VerloopInterface = {
     }
     VerloopNative.setUserPhone(userPhone);
   },
-  initialize: (clientId: string): void => {
-    if (!VerloopNative.initialize) {
-      console.error("initialize not available on", Platform.OS);
-      return;
-    }
-    VerloopNative.initialize(clientId);
-  },
-  setUserId: (userId: string): void => {
-    if (!VerloopNative.setUserId) {
-      console.error("setUserId not available on", Platform.OS);
-      return;
-    }
-    VerloopNative.setUserId(userId);
-  },
   showChat: (): void => {
     if (!VerloopNative.showChat) {
       console.error("showChat not available on", Platform.OS);
@@ -147,6 +133,85 @@ const Verloop: VerloopInterface = {
       return;
     }
     VerloopNative.removeListeners(count);
+  },
+  clearChat: (): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.clearChat) {
+        console.error("clearChat not available on iOS");
+        return;
+      }
+      VerloopNative.clearChat();
+    }
+  },
+
+  logOut: (): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.logOut) {
+        console.error("logOut not available on iOS");
+        return;
+      }
+      VerloopNative.logOut();
+    }
+  },
+
+  openWidget: (): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.openWidget) {
+        console.error("openWidget not available on iOS");
+        return;
+      }
+      VerloopNative.openWidget();
+    }
+  },
+
+  closeWidget: (): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.closeWidget) {
+        console.error("closeWidget not available on iOS");
+        return;
+      }
+      VerloopNative.closeWidget();
+    }
+  },
+
+  enableiOSNotification: (notificatioDeviceToken: string): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.enableiOSNotification) {
+        console.error("enableiOSNotification not available on iOS");
+        return;
+      }
+      VerloopNative.enableiOSNotification(notificatioDeviceToken);
+    }
+  },
+
+  login: (): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.login) {
+        console.error("login not available on iOS");
+        return;
+      }
+      VerloopNative.login();
+    }
+  },
+
+  logingWithUserId: (userId: string): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.logingWithUserId) {
+        console.error("logingWithUserId not available on iOS");
+        return;
+      }
+      VerloopNative.logingWithUserId(userId);
+    }
+  },
+
+  setUrlRedirectionFlag: (canRedirect: string): void => {
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.setUrlRedirectionFlag) {
+        console.error("setUrlRedirectionFlag not available on iOS");
+        return;
+      }
+      VerloopNative.setUrlRedirectionFlag(canRedirect);
+    }
   },
 };
 
