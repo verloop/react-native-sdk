@@ -3,8 +3,8 @@ module.exports = {
     platforms: {
       android: {
         sourceDir: "./android",
-        packageImportPath: "import com.awesomeverloop.VerloopPackage;",
-        packageInstance: "new VerloopPackage()",
+        packageImportPath: "import com.reactlibrary.VerloopSdkPackage;",
+        packageInstance: "new VerloopSdkPackage()",
       },
     },
   },

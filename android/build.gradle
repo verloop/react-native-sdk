@@ -24,7 +24,7 @@ android {
         versionName "1.0"
     }
 
-    namespace 'com.awesomeverloop'
+    namespace 'com.reactlibrary.VerloopSdkPackage'
 
     // Align Java to Java 17
     compileOptions {

@@ -5,7 +5,7 @@ const react_native_1 = require("react-native");
 console.log("Platform.OS:", react_native_1.Platform.OS);
 console.log("NativeModules keys:", Object.keys(react_native_1.NativeModules));
 // Select the appropriate module based on platform
-const VerloopModule = react_native_1.Platform.OS === 'ios' ? react_native_1.NativeModules.RNVerloopSdk : react_native_1.NativeModules.AwesomeVerloop;
+const VerloopModule = react_native_1.NativeModules.RNVerloopSdk;
 console.log("Selected VerloopModule:", VerloopModule);
 // Default to an empty object if the module isn’t available
 const VerloopNative = VerloopModule || {};

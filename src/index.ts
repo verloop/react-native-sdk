@@ -25,7 +25,7 @@ interface VerloopInterface {
 }
 
 // Select the appropriate module based on platform
-const VerloopModule = Platform.OS === 'ios' ? NativeModules.RNVerloopSdk : NativeModules.AwesomeVerloop;
+const VerloopModule = NativeModules.RNVerloopSdk
 
 console.log("Selected VerloopModule:", VerloopModule);
 

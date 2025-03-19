@@ -1,6 +1,6 @@
 {
   "name": "awesome-verloop",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Android Toast implementation for React Native",
   "homepage": "https://github.com/nv08/awesome-verloop", 
   "main": "src/index.js",
@@ -42,11 +42,7 @@
     "!**/__mocks__",
     "!**/.*"
   ],
-  "react-native": {
-    "android": {
-      "package": "com.awesomeVerloop.VerloopPackage"
-    }
-  },
+
   "devDependencies": {
     "typescript": "^5.8.2"
   },

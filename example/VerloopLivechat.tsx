@@ -25,10 +25,9 @@ const VerloopLiveChat: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const clientId = 'reactnative'; // Replace with your actual client ID
+    const clientId = 'hello.dev'; // Replace with your actual client ID
     // Initialize Verloop SDK
     VerloopSdk.createAnonymousUserConfig(clientId);
-
     // Set up event emitter with the raw native module
     const eventEmitter = new NativeEventEmitter(VerloopSdk);
 
@@ -46,16 +45,15 @@ const VerloopLiveChat: React.FC = () => {
       },
     );
 
-    VerloopSdk.putCustomField('test1', 'value');
-    VerloopSdk.putCustomFieldWithScope('test2', 'value', 'USER');
-    VerloopSdk.setUserEmail('user@example.com');
-    VerloopSdk.setUserPhone('1234567890');
-    VerloopSdk.setUserName('Test User');
+    // VerloopSdk.putCustomField('test1', 'value');
+    // VerloopSdk.putCustomFieldWithScope('test2', 'value', 'USER');
+    // VerloopSdk.setUserEmail('user@example.com');
+    // VerloopSdk.setUserPhone('1234567890');
+    // VerloopSdk.setUserName('Test User');
 
     // Enable listeners and show chat
     VerloopSdk.setButtonClickListener();
     VerloopSdk.setUrlClickListener();
-    VerloopSdk.showChat();
 
     return () => {
       buttonClickListener.remove();

@@ -1,4 +1,4 @@
-package com.awesomeverloop
+package com.reactlibrary.VerloopSdkPackage
 
 import android.app.Activity
 import com.facebook.react.bridge.ReactApplicationContext
@@ -19,7 +19,7 @@ class VerloopModule(private val reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
     companion object {
-        const val NAME = "AwesomeVerloop"
+        const val NAME = "RNVerloopSdk"
     }
 
     private var verloopConfigBuilder: VerloopConfig.Builder? = null
