@@ -1,8 +1,7 @@
 {
-  "name": "awesome-verloop",
-  "version": "1.1.0",
-  "description": "Android Toast implementation for React Native",
-  "homepage": "https://github.com/nv08/awesome-verloop", 
+  "name": "react-native-verloop-sdk",
+  "version": "1.1.0-rc.5",
+  "description": "VerloopSDK is to display client side livechat widget on the mobile app.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
@@ -13,12 +12,21 @@
   "keywords": [
     "react-native",
     "android",
-    "toast",
-    "react-native-android",
     "ios"
   ],
-  "author": "nv08",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-verloop-sdk.git.git"
+  },
+  "author": "Raghav Rawat <raghav@verloop.com> (https://github.com/github_account/react-native-verloop-sdk)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/github_account/react-native-verloop-sdk.git/issues"
+  },
+  "homepage": "https://github.com/github_account/react-native-verloop-sdk.git#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": ">=0.70.0"
@@ -44,9 +52,14 @@
   ],
 
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "prettier": "^3.0.3"
   },
-  "dependencies": {
-    "cocoapods": "^0.0.0"
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
   }
 }
