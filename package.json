@@ -1,29 +1,56 @@
 {
-  "name": "react-native-verloop-sdk",
-  "title": "React Native Verloop Sdk",
-  "version": "1.0.71",
-  "description": "TODO",
-  "main": "index.js",
+  "name": "awesome-verloop",
+  "version": "1.0.9",
+  "description": "Android Toast implementation for React Native",
+  "homepage": "https://github.com/nv08/awesome-verloop", 
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/github_account/react-native-verloop-sdk.git",
-    "baseUrl": "https://github.com/github_account/react-native-verloop-sdk"
+    "build-sdk": "cd android && ./gradlew build",
+    "build": "tsc",
+    "clean": "cd android && ./gradlew clean"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "android",
+    "toast",
+    "react-native-android",
+    "ios"
   ],
-  "author": {
-    "name": "Raghav Rawat",
-    "email": "raghav@verloop.com"
-  },
+  "author": "nv08",
   "license": "MIT",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
-
   "peerDependencies": {
-    "react-native": "^0.62.2"
+    "react": "*",
+    "react-native": ">=0.70.0"
+  },
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!android/java*",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "react-native": {
+    "android": {
+      "package": "com.awesomeVerloop.VerloopPackage"
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "cocoapods": "^0.0.0"
   }
 }

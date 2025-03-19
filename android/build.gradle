@@ -1,32 +1,51 @@
-
+// Define plugin dependencies
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:8.1.0' // Match your RN version
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0' // Kotlin support
     }
 }
 
+// Apply plugins
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
+// Android configuration
 android {
-    compileSdkVersion 29
-    buildToolsVersion "23.0.3"
-
+    compileSdkVersion 33
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
-    lintOptions {
-        abortOnError false
+
+    namespace 'com.awesomeverloop'
+
+    // Align Java to Java 17
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // Align Kotlin to Java 17
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    // Use JVM toolchain to enforce Java 17
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
     }
 }
 
+// Project repositories and dependencies
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
@@ -35,6 +54,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:0.20.1'
-    implementation 'com.github.verloop:android-sdk:1.0.7'
+    implementation 'com.facebook.react:react-android:+' // Updated for RN 0.71+
+      implementation 'com.github.verloop:android-sdk:1.1.17'
 }
