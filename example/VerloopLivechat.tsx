@@ -30,7 +30,7 @@ const VerloopLiveChat: React.FC = () => {
     VerloopSdk.createAnonymousUserConfig(clientId);
 
     // Set up event emitter with the raw native module
-    const eventEmitter = new NativeEventEmitter(NativeModules.AwesomeVerloop);
+    const eventEmitter = new NativeEventEmitter(VerloopSdk);
 
     // Add listeners
     const buttonClickListener = eventEmitter.addListener(
@@ -46,7 +46,6 @@ const VerloopLiveChat: React.FC = () => {
       },
     );
 
-    // Optional configurations
     VerloopSdk.putCustomField('test1', 'value');
     VerloopSdk.putCustomFieldWithScope('test2', 'value', 'USER');
     VerloopSdk.setUserEmail('user@example.com');
@@ -58,7 +57,6 @@ const VerloopLiveChat: React.FC = () => {
     VerloopSdk.setUrlClickListener();
     VerloopSdk.showChat();
 
-    // Cleanup on unmount
     return () => {
       buttonClickListener.remove();
       urlClickListener.remove();
