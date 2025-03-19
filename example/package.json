@@ -11,9 +11,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "react-native-verloop-sdk": "^1.0.70",
     "react": "19.0.0",
-    "react-native": "0.78.0"
+    "react-native": "0.78.0",
+    "react-native-verloop-sdk": "^1.1.0-rc.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
