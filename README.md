@@ -1,8 +1,16 @@
 ## Getting started
 
+> **Important Note**: This SDK version supports React Native >= 0.70.0. For older React Native versions (< 0.70.0), please use our previous package versions.
+
 `$ npm install react-native-verloop-sdk --save`
 
-### Mostly automatic installation
+### Manual Installation (React Native >= 0.70)
+
+The package is automatically linked when building the app. No additional installation steps are required.
+
+### Mostly automatic installation (React Native < 0.70)
+
+For React Native versions below 0.70, please use our older package versions and follow the legacy installation steps:
 
 `$ react-native link react-native-verloop-sdk`
 
@@ -17,7 +25,6 @@
 ```
 
 ### Pods installation
-
 
 #### iOS
 
@@ -35,7 +42,7 @@
    `pod install --repo-update`
 
 
-#### Android
+#### Android (React Native < 0.70)
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.VerloopSdkPackage;` to the imports at the top of the file
@@ -52,59 +59,42 @@
 
 ## Usage
 ```javascript
-import { Component } from 'react';
-import { NativeEventEmitter, NativeModules } from 'react-native';
-import VerloopSdk from 'react-native-verloop-sdk';
-
-export default class VerloopLiveChat extends Component {
-  async componentDidMount() {
-    const clientId = 'reactnative'; // it is same as https://<YOUR COMPANY ID>.verloop.io
-    const userId = 'TestReactNative'; // it is the unique userID to identify all the chats for this user
-
-    VerloopSdk.createUserConfig(clientId, userId);
-    //or
-    //VerloopSdk.createAnonymousUserConfig(clientId);
-  
+  useEffect(() => {
+    const clientId = 'reactnative'; // Replace with your actual client ID
+    // Initialize Verloop SDK
+    VerloopSdk.createAnonymousUserConfig(clientId);
+    // Set up event emitter with the raw native module
     const eventEmitter = new NativeEventEmitter(VerloopSdk);
-    VerloopSdk.setButtonClickListener()
-    VerloopSdk.setUrlClickListener()
-    this.eventListener = eventEmitter.addListener(
+
+    // Add listeners
+    const buttonClickListener = eventEmitter.addListener(
       'veloop_button_clicked',
-      (event) => {
-        console.log('veloop_button_clicked',event);
-      }
+      event => {
+        console.log('Button clicked event:', event);
+      },
     );
-    this.eventListener = eventEmitter.addListener(
+    const urlClickListener = eventEmitter.addListener(
       'veloop_url_clicked',
-      (event) => {
-        console.log('veloop_url_clicked',event);
-      }
+      event => {
+        console.log('URL clicked event:', event);
+      },
     );
-    
-    //optional
-    VerloopSdk.putCustomFieldWithScope('test', 'value', 'USER');
-    //optional
-    //VerloopSdk.setRecipeId("<recipeId>");
-    //optional
-    VerloopSdk.setUserEmail('<userEmail>');
-    //optional
-    VerloopSdk.setUserPhone('<userPhone>');
-    //optional
-    VerloopSdk.setUserName('<userPhone>');
 
-    VerloopSdk.enableiOSNotification('<device token>')
+    VerloopSdk.putCustomField('test1', 'value');
+    VerloopSdk.putCustomFieldWithScope('test2', 'value', 'USER');
+    VerloopSdk.setUserEmail('user@example.com');
+    VerloopSdk.setUserPhone('1234567890');
+    VerloopSdk.setUserName('Test User');
 
-    VerloopSdk.showChat();
-    
-  }
+    // Enable listeners and show chat
+    VerloopSdk.setButtonClickListener();
+    VerloopSdk.setUrlClickListener();
 
-  render() {
-    return null;
-  }
-  componentWillUnmount() {
-    this.eventListener.remove(); //Removes the listener
-  }
-}
+    return () => {
+      buttonClickListener.remove();
+      urlClickListener.remove();
+    };
+  }, []);
 ```
 
 ### Steps to enable notification:

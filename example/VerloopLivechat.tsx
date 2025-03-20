@@ -25,7 +25,7 @@ const VerloopLiveChat: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const clientId = 'hello.dev'; // Replace with your actual client ID
+    const clientId = 'reactnative'; // Replace with your actual client ID
     // Initialize Verloop SDK
     VerloopSdk.createAnonymousUserConfig(clientId);
     // Set up event emitter with the raw native module
