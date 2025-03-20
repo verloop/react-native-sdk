@@ -14,7 +14,7 @@ For React Native versions below 0.70, please use our older package versions and 
 
 `$ react-native link react-native-verloop-sdk`
 
-### If you are using proguard in android add the following
+### If you are using proguard in android add the following (React Native < 0.70)
 
 ```
 -keepattributes *Annotation*
