@@ -1,6 +1,13 @@
 ## Getting started
 
-> **Important Note**: This SDK version supports React Native >= 0.70.0. For older React Native versions (< 0.70.0), please use our previous package versions.
+> **Important Notes**: 
+> - This SDK version supports React Native >= 0.70.0. For older React Native versions (< 0.70.0), please use our previous package versions.
+> - For Expo users: This SDK requires native modules and won't work with Expo Go. You must use Development Build.
+
+### Installation
+
+#### For Expo projects:
+1. Install the package:
 
 `$ npm install react-native-verloop-sdk --save`
 
