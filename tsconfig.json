@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "react-native-verloop-sdk": ["../src/index.ts"] // Optional: Direct path to source
+    }
+  },
+  "exclude": ["example"] // Exclude the example app
+}

@@ -1,29 +1,65 @@
 {
   "name": "react-native-verloop-sdk",
-  "title": "React Native Verloop Sdk",
-  "version": "1.0.71",
-  "description": "TODO",
-  "main": "index.js",
+  "version": "1.1.0-rc.6",
+  "description": "VerloopSDK is to display client side livechat widget on the mobile app.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/github_account/react-native-verloop-sdk.git",
-    "baseUrl": "https://github.com/github_account/react-native-verloop-sdk"
+    "build-sdk": "cd android && ./gradlew build",
+    "build": "tsc",
+    "clean": "cd android && ./gradlew clean"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "android",
+    "ios"
   ],
-  "author": {
-    "name": "Raghav Rawat",
-    "email": "raghav@verloop.com"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-verloop-sdk.git.git"
   },
+  "author": "Raghav Rawat <raghav@verloop.com> (https://github.com/github_account/react-native-verloop-sdk)",
   "license": "MIT",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
-
+  "bugs": {
+    "url": "https://github.com/github_account/react-native-verloop-sdk.git/issues"
+  },
+  "homepage": "https://github.com/github_account/react-native-verloop-sdk.git#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
-    "react-native": "^0.62.2"
+    "react": "*",
+    "react-native": ">=0.70.0"
+  },
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!android/java*",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "prettier": "^3.0.3"
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
   }
 }

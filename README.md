@@ -1,12 +1,27 @@
 ## Getting started
 
+> **Important Notes**: 
+> - This SDK version supports React Native >= 0.70.0. For older React Native versions (< 0.70.0), please use our previous package versions.
+> - For Expo users: This SDK requires native modules and won't work with Expo Go. You must use Development Build.
+
+### Installation
+
+#### For Expo projects:
+1. Install the package:
+
 `$ npm install react-native-verloop-sdk --save`
 
-### Mostly automatic installation
+### Manual Installation (React Native >= 0.70)
+
+The package is automatically linked when building the app. No additional installation steps are required.
+
+### Mostly automatic installation (React Native < 0.70)
+
+For React Native versions below 0.70, please use our older package versions and follow the legacy installation steps:
 
 `$ react-native link react-native-verloop-sdk`
 
-### If you are using proguard in android add the following
+### If you are using proguard in android add the following (React Native < 0.70)
 
 ```
 -keepattributes *Annotation*
@@ -16,17 +31,25 @@
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 ```
 
-### Manual installation
-
+### Pods installation
 
 #### iOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-verloop-sdk` and add `VerloopSdk.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libVerloopSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1. Navigate to Your iOS Directory:
+   Open a terminal and navigate to the ios directory of your React Native project:
+   `cd ios`
+2. Edit Your Podfile:
+   Open the generated Podfile in your favorite text editor and add the necessary ,uncomment platform set like below :
+   `platform :ios, '13.0'`
+3. Install Pods:
+   `pod install`
 
-#### Android
+   Updating Pods : (if needed)
+   `cd ios`
+   `pod install --repo-update`
+
+
+#### Android (React Native < 0.70)
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.VerloopSdkPackage;` to the imports at the top of the file
@@ -41,64 +64,44 @@
       compile project(':react-native-verloop-sdk')
   	```
 
-#### Additional iOS step:
-
-* Add a line in podfile (ios ->Podfile) : ENV['SWIFT_VERSION'] = '4.2'
-* Run pod install in the same folder
-
 ## Usage
 ```javascript
-import {Component} from 'react';
-import { NativeEventEmitter, NativeModules } from 'react-native';
-import VerloopSdk from 'react-native-verloop-sdk';
+  useEffect(() => {
+    const clientId = 'reactnative'; // Replace with your actual client ID
+    // Initialize Verloop SDK
+    VerloopSdk.createAnonymousUserConfig(clientId);
+    // Set up event emitter with the raw native module
+    const eventEmitter = new NativeEventEmitter(VerloopSdk);
 
-export default class VerloopLiveChat extends Component {
+    // Add listeners
+    const buttonClickListener = eventEmitter.addListener(
+      'veloop_button_clicked',
+      event => {
+        console.log('Button clicked event:', event);
+      },
+    );
+    const urlClickListener = eventEmitter.addListener(
+      'veloop_url_clicked',
+      event => {
+        console.log('URL clicked event:', event);
+      },
+    );
 
+    VerloopSdk.putCustomField('test1', 'value');
+    VerloopSdk.putCustomFieldWithScope('test2', 'value', 'USER');
+    VerloopSdk.setUserEmail('user@example.com');
+    VerloopSdk.setUserPhone('1234567890');
+    VerloopSdk.setUserName('Test User');
 
-    async componentDidMount() {
-        const clientId = "hello"; // it is same as https://<YOUR COMPANY ID>.verloop.io
-        const userId = "raghav"; // it is the unique userID to identify all the chats for this user
+    // Enable listeners and show chat
+    VerloopSdk.setButtonClickListener();
+    VerloopSdk.setUrlClickListener();
 
-        // VerloopSdk.createAnonymousUserConfig(clientId);
-        //or
-        VerloopSdk.createUserConfig(clientId, userId);
-
-        const eventEmitter = new NativeEventEmitter(VerloopSdk);
-        this.eventListener = eventEmitter.addListener('veloop_button_clicked', (event) => {
-           console.log(event.title);
-           console.log(event.type);
-           console.log(event.payload);
-        });
-        this.eventListener = eventEmitter.addListener('veloop_url_clicked', (event) => {
-           console.log(event.url);
-        });
-
-        //optional
-        VerloopSdk.putCustomField(key, value);
-        //optional
-        VerloopSdk.putCustomFieldWithScope("test", "value", "USER");
-        //optional
-        VerloopSdk.putCustomFieldWithScope("test2", "value2", "ROOM");
-        //optional
-        VerloopSdk.setRecipeId(recipeId);
-        //optional
-        VerloopSdk.setUserEmail(email);
-        //optional
-        VerloopSdk.setUserPhone(phoneNumber);
-        //optional
-        VerloopSdk.setUserName(name);
-
-        VerloopSdk.showChat();
-        // VerloopSdk.hideChat();
-    }
-
-    render() {
-        return null;
-    }
-    componentWillUnmount() {
-        this.eventListener.remove(); //Removes the listener
-    }
-}
+    return () => {
+      buttonClickListener.remove();
+      urlClickListener.remove();
+    };
+  }, []);
 ```
 
 ### Steps to enable notification:

@@ -1,0 +1,38 @@
+# Ignore build output
+/android/build
+/android/.gradle
+/android/.idea
+/android/local.properties
+android/java*
+android/gradle/*
+android/*.bat
+android/gradlew
+
+# Ignore node_modules
+/node_modules
+
+# Ignore logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignore test files
+__tests__
+*.spec.js
+*.test.js
+
+# Ignore TypeScript build output
+dist
+*.tsbuildinfo
+
+# Ignore IDE and editor files
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Ignore other unnecessary files
+.DS_Store
+*.swp
+
+example/
