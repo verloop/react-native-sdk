@@ -1,6 +1,7 @@
 package com.reactlibrary.VerloopSdkPackage
 
 import android.app.Activity
+import android.content.Intent
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -13,6 +14,7 @@ import io.verloop.sdk.Verloop
 import io.verloop.sdk.VerloopConfig
 import io.verloop.sdk.LiveChatButtonClickListener
 import io.verloop.sdk.LiveChatUrlClickListener
+import io.verloop.sdk.ui.Constants
 
 @ReactModule(name = VerloopModule.NAME)
 class VerloopModule(private val reactContext: ReactApplicationContext) : 
@@ -190,5 +192,14 @@ class VerloopModule(private val reactContext: ReactApplicationContext) :
     @ReactMethod
     fun removeListeners(type: Int?) {
         // Required for RN event emitter
+    }
+
+    @ReactMethod
+    fun dismissChat() {
+        val activity: Activity? = currentActivity
+        if (activity != null) {
+            val intent = Intent(Constants.ACTION_CLOSE_VERLOOP_WIDGET)
+            activity.sendBroadcast(intent)
+        }
     }
 }
