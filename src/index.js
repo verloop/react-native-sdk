@@ -178,5 +178,12 @@ const Verloop = {
             VerloopNative.setUrlRedirectionFlag(canRedirect);
         }
     },
+    dismissChat: () => {
+        if (!VerloopNative.dismissChat) {
+            console.error("dismissChat not available on", react_native_1.Platform.OS);
+            return;
+        }
+        VerloopNative.dismissChat();
+    },
 };
 exports.default = Verloop;

@@ -78,6 +78,8 @@ For React Native versions below 0.70, please use our older package versions and 
       'veloop_button_clicked',
       event => {
         console.log('Button clicked event:', event);
+        // To dismiss the chat (if required) [dismissChat- hides the widget and removes it from the view]
+        // VerloopSdk.dismissChat();
       },
     );
     const urlClickListener = eventEmitter.addListener(

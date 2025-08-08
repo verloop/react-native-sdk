@@ -35,7 +35,8 @@ const VerloopLiveChat: React.FC = () => {
     const buttonClickListener = eventEmitter.addListener(
       'veloop_button_clicked',
       event => {
-        console.log('Button clicked event:', event);
+        console.log('Button clicked event:', event, VerloopSdk);
+        VerloopSdk.dismissChat();
       },
     );
     const urlClickListener = eventEmitter.addListener(

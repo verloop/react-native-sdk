@@ -25,6 +25,7 @@ interface VerloopInterface {
   login?(): void; // IOS-specific method
   logingWithUserId?(userId: string): void; // IOS-specific method
   setUrlRedirectionFlag?(canRedirect: string): void; // IOS-specific method
+  dismissChat(): void;
 }
 
 const VerloopModule = NativeModules.RNVerloopSdk
@@ -212,6 +213,13 @@ const Verloop: VerloopInterface = {
       }
       VerloopNative.setUrlRedirectionFlag(canRedirect);
     }
+  },
+  dismissChat: (): void => {
+    if (!VerloopNative.dismissChat) {
+      console.error("dismissChat not available on", Platform.OS);
+      return;
+    }
+    VerloopNative.dismissChat();
   },
 };
 

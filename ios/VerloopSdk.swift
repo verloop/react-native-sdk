@@ -10,8 +10,9 @@ import VerloopSDKiOS
 @objc(RNVerloopSdk)
 public class RNVerloopSdk : RCTEventEmitter {
     
-    private var config:VLConfig?
-    private var verloop:VerloopSDK?
+    private var config: VLConfig?
+    private var verloop: VerloopSDK?
+    private var viewController: UIViewController? 
     
     
     var hasObservers:Bool?
@@ -146,12 +147,25 @@ public class RNVerloopSdk : RCTEventEmitter {
             DispatchQueue.main.async {
                 self.config?.setUrlRedirectionFlag(canRedirect :false)
                 self.verloop = VerloopSDK(config: self.config!)
-                // self.verloop?.observeLiveChatEventsOn(vlEventDelegate : self)
                 let cntrl = self.verloop!.getNavController()
+                self.viewController = cntrl
                 self.topViewController()?.present(cntrl, animated: false)
             }
         }else{
             debugPrint("error -> config not initialised before showChat method is called")
+        }
+    }
+    
+    @objc
+    func dismissChat() {
+        if self.viewController != nil {
+            DispatchQueue.main.async {
+                self.viewController?.dismiss(animated: true, completion: {
+                    self.viewController = nil // Clear the reference after dismissing
+                })
+            }
+        } else {
+            debugPrint("error -> viewController is nil, no chat to dismiss")
         }
     }
     
