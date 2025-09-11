@@ -11,6 +11,7 @@ import {
 import VerloopSdk from 'react-native-verloop-sdk';
 
 const VerloopLiveChat: React.FC = () => {
+  console.log(VerloopSdk, 'VerloopSdk instance');
 
   useEffect(() => {
     if (Platform.OS === 'ios') {
@@ -19,7 +20,7 @@ const VerloopLiveChat: React.FC = () => {
         VerloopSdk.createAnonymousUserConfig('your-client-id');
         VerloopSdk.showChat();
       } else {
-        console.error("RNVerloopSdk not available in useEffect");
+        console.error('RNVerloopSdk not available in useEffect');
       }
     }
   }, []);
@@ -36,6 +37,7 @@ const VerloopLiveChat: React.FC = () => {
       'veloop_button_clicked',
       event => {
         console.log('Button clicked event:', event, VerloopSdk);
+         VerloopSdk.logOut();
         VerloopSdk.dismissChat();
       },
     );

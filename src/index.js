@@ -116,13 +116,11 @@ const Verloop = {
         }
     },
     logOut: () => {
-        if (react_native_1.Platform.OS === 'ios') {
-            if (!VerloopNative.logOut) {
-                console.error("logOut not available on iOS");
-                return;
-            }
-            VerloopNative.logOut();
+        if (!VerloopNative.logOut) {
+            console.error("logOut not available on", react_native_1.Platform.OS);
+            return;
         }
+        VerloopNative.logOut();
     },
     openWidget: () => {
         if (react_native_1.Platform.OS === 'ios') {
