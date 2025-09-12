@@ -11,8 +11,6 @@ import {
 import VerloopSdk from 'react-native-verloop-sdk';
 
 const VerloopLiveChat: React.FC = () => {
-  console.log(VerloopSdk, 'VerloopSdk instance');
-
   useEffect(() => {
     if (Platform.OS === 'ios') {
       const module = NativeModules.RNVerloopSdk;
@@ -37,7 +35,8 @@ const VerloopLiveChat: React.FC = () => {
       'veloop_button_clicked',
       event => {
         console.log('Button clicked event:', event, VerloopSdk);
-         VerloopSdk.logOut();
+        VerloopSdk.clearChat && VerloopSdk.clearChat();
+        //VerloopSdk.logOut();
         VerloopSdk.dismissChat();
       },
     );

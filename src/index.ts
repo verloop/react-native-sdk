@@ -136,11 +136,13 @@ const Verloop: VerloopInterface = {
     VerloopNative.removeListeners(count);
   },
   clearChat: (): void => {
-    if (!VerloopNative.clearChat) {
-      console.error("clearChat not available on", Platform.OS);
-      return;
+    if (Platform.OS === 'ios') {
+      if (!VerloopNative.clearChat) {
+        console.error("clearChat not available on iOS");
+        return;
+      }
+      VerloopNative.clearChat();
     }
-    VerloopNative.clearChat();
   },
 
   logOut: (): void => {
