@@ -170,13 +170,13 @@ public class RNVerloopSdk : RCTEventEmitter {
     }
     
     @objc
-    func clearChat() {
+    func closeChat() {
         if self.config != nil {
             DispatchQueue.main.async {
-                self.verloop?.clearConfig()
+                self.verloop?.close()
             }
         }else{
-            debugPrint("error -> config not initialised before clearChat method is called")
+            debugPrint("error -> config not initialised before closeChat method is called")
         }
     }
     

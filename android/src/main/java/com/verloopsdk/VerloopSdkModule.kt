@@ -210,4 +210,9 @@ class VerloopModule(private val reactContext: ReactApplicationContext) :
         verloop = null
         customVariableList.clear()
     }
+
+    @ReactMethod
+    fun closeChat() {
+        verloop?.closeChat()
+    }
 }

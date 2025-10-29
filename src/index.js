@@ -106,21 +106,19 @@ const Verloop = {
         }
         VerloopNative.removeListeners(count);
     },
-    clearChat: () => {
-        if (react_native_1.Platform.OS === 'ios') {
-            if (!VerloopNative.clearChat) {
-                console.error("clearChat not available on iOS");
-                return;
-            }
-            VerloopNative.clearChat();
-        }
-    },
-    logOut: () => {
-        if (!VerloopNative.logOut) {
-            console.error("logOut not available on", react_native_1.Platform.OS);
+    closeChat: () => {
+        if (!VerloopNative.closeChat) {
+            console.error("closeChat not available on", react_native_1.Platform.OS);
             return;
         }
-        VerloopNative.logOut();
+        VerloopNative.closeChat();
+    },
+    logout: () => {
+        if (!VerloopNative.logout) {
+            console.error("logout not available on", react_native_1.Platform.OS);
+            return;
+        }
+        VerloopNative.logout();
     },
     openWidget: () => {
         if (react_native_1.Platform.OS === 'ios') {

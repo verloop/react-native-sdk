@@ -17,8 +17,8 @@ interface VerloopInterface {
   showChat(): void;
   addListener(eventType: string): void; // Android-specific method
   removeListeners(count: number): void; // Android-specific method
-  clearChat?(): void; // IOS-specific method
-  logOut?(): void; // IOS-specific method
+  closeChat(): void;
+  logout?(): void;
   openWidget?(): void; // IOS-specific method
   closeWidget?(): void; // IOS-specific method
   enableiOSNotification?(notificatioDeviceToken: string): void; // IOS-specific method
@@ -135,24 +135,20 @@ const Verloop: VerloopInterface = {
     }
     VerloopNative.removeListeners(count);
   },
-  clearChat: (): void => {
-    if (Platform.OS === 'ios') {
-      if (!VerloopNative.clearChat) {
-        console.error("clearChat not available on iOS");
-        return;
-      }
-      VerloopNative.clearChat();
+  closeChat: (): void => {
+    if (!VerloopNative.closeChat) {
+      console.error("closeChat not available on", Platform.OS);
+      return;
     }
+    VerloopNative.closeChat();
   },
 
-  logOut: (): void => {
-    if (Platform.OS === 'ios') {
-      if (!VerloopNative.logOut) {
-        console.error("logOut not available on iOS");
-        return;
-      }
-      VerloopNative.logOut();
+  logout: (): void => {
+    if (!VerloopNative.logout) {
+      console.error("logout not available on", Platform.OS);
+      return;
     }
+    VerloopNative.logout();
   },
 
   openWidget: (): void => {
