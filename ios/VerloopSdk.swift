@@ -170,24 +170,24 @@ public class RNVerloopSdk : RCTEventEmitter {
     }
     
     @objc
-    func clearChat() {
+    func closeChat() {
         if self.config != nil {
             DispatchQueue.main.async {
-                self.verloop?.clearConfig()
+                self.verloop?.closeChat()
             }
         }else{
-            debugPrint("error -> config not initialised before clearChat method is called")
+            debugPrint("error -> config not initialised before closeChat method is called")
         }
     }
     
     @objc
-    func logOut() {
+    func logout() {
         if self.config != nil {
             DispatchQueue.main.async {
                 self.verloop?.logout()
             }
         }else{
-            debugPrint("error -> config not initialised before logOut method is called")
+            debugPrint("error -> config not initialised before logout method is called")
         }
     }
     

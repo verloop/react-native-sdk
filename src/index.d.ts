@@ -1,4 +1,4 @@
-declare module "react-native-verloop-sdk" {
+declare module 'react-native-verloop-sdk' {
   interface VerloopInterface {
     createUserConfig(clientId: string, userId: string): void;
     createAnonymousUserConfig(clientId: string): void;
@@ -14,8 +14,8 @@ declare module "react-native-verloop-sdk" {
     showChat(): void;
     addListener(eventType: string): void; // Android-specific method
     removeListeners(count: number): void; // Android-specific method
-    clearChat?(): void; // IOS-specific method
-    logOut?(): void; // IOS-specific method
+    logout(): void; // log out from chat but does not close existing chat
+    closeChat(): void; // closes existing chat
     openWidget?(): void; // IOS-specific method
     closeWidget?(): void; // IOS-specific method
     enableiOSNotification?(notificatioDeviceToken: string): void; // IOS-specific method

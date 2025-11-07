@@ -202,4 +202,17 @@ class VerloopModule(private val reactContext: ReactApplicationContext) :
             activity.sendBroadcast(intent)
         }
     }
+
+    @ReactMethod
+    fun logout() {
+        verloop?.logout()
+        verloopConfigBuilder = null
+        verloop = null
+        customVariableList.clear()
+    }
+
+    @ReactMethod
+    fun closeChat() {
+        verloop?.closeChat()
+    }
 }
