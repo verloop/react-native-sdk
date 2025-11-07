@@ -36,7 +36,7 @@ const VerloopLiveChat: React.FC = () => {
       event => {
         console.log('Button clicked event:', event, VerloopSdk);
         // VerloopSdk.clearChat && VerloopSdk.clearChat();
-        VerloopSdk.logOut();
+        VerloopSdk.logout();
         VerloopSdk.dismissChat();
       },
     );

@@ -55,5 +55,5 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-android:+' // Updated for RN 0.71+
-    implementation 'com.github.verloop:android-sdk:1.1.19-rc.5'
+    implementation 'com.github.verloop:android-sdk:1.1.19'
 }
